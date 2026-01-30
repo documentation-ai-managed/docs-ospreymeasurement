@@ -14,142 +14,123 @@
     }
   },
   "navigation": {
-    "products": [
+    "languages": [
       {
-        "product": "Product 1",
-        "versions": [
+        "language": "English",
+        "tabs": [
           {
-            "version": "v1",
-            "languages": [
+            "tab": "Documentation",
+            "icon": "book",
+            "groups": [
               {
-                "language": "English",
-                "dropdowns": [
+                "group": "Getting Started",
+                "icon": "rocket",
+                "pages": [
                   {
-                    "dropdown": "Test Drop",
-                    "tabs": [
-                      {
-                        "tab": "Documentation",
-                        "icon": "book",
-                        "groups": [
-                          {
-                            "group": "Getting Started",
-                            "icon": "rocket",
-                            "pages": [
-                              {
-                                "title": "Introduction",
-                                "path": "introduction",
-                                "icon": "home"
-                              },
-                              {
-                                "title": "Quickstart",
-                                "path": "quickstart",
-                                "icon": "zap"
-                              },
-                              {
-                                "title": "Installation",
-                                "path": "installation",
-                                "icon": "file-text"
-                              }
-                            ]
-                          },
-                          {
-                            "group": "Usage",
-                            "icon": "compass",
-                            "pages": [
-                              {
-                                "title": "Usage",
-                                "path": "usage",
-                                "icon": "file-text"
-                              },
-                              {
-                                "title": "Configuration",
-                                "path": "configuration",
-                                "icon": "settings"
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "tab": "API Reference",
-                        "icon": "code",
-                        "groups": [
-                          {
-                            "group": "Endpoints",
-                            "openapi": "openapi.yaml",
-                            "pages": []
-                          }
-                        ]
-                      },
-                      {
-                        "tab": "Help Center",
-                        "icon": "help-circle",
-                        "pages": [
-                          {
-                            "title": "Help Center",
-                            "path": "help-center",
-                            "icon": "home"
-                          },
-                          {
-                            "group": "FAQs",
-                            "icon": "help-circle",
-                            "expandable": false,
-                            "pages": [
-                              {
-                                "title": "Getting API Access",
-                                "path": "help-center/faq/getting-api-access"
-                              }
-                            ]
-                          },
-                          {
-                            "group": "Troubleshooting",
-                            "icon": "alert-circle",
-                            "expandable": false,
-                            "pages": [
-                              {
-                                "title": "Login Issues",
-                                "path": "help-center/troubleshooting/login-issues"
-                              }
-                            ]
-                          },
-                          {
-                            "group": "Guides",
-                            "icon": "book-open",
-                            "expandable": false,
-                            "pages": [
-                              {
-                                "title": "New Project Guide",
-                                "path": "help-center/guides/new-project"
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "tab": "Changelog",
-                        "icon": "clock",
-                        "pages": [
-                          {
-                            "title": "Release History",
-                            "path": "changelog",
-                            "icon": "history"
-                          }
-                        ]
-                      }
-                    ]
+                    "title": "Introduction",
+                    "path": "introduction",
+                    "icon": "home"
+                  },
+                  {
+                    "title": "Quickstart",
+                    "path": "quickstart",
+                    "icon": "zap"
+                  },
+                  {
+                    "title": "Installation",
+                    "path": "installation",
+                    "icon": "file-text"
                   }
                 ]
               },
               {
-                "language": "Norsk",
+                "group": "Usage",
+                "icon": "compass",
+                "pages": [
+                  {
+                    "title": "Usage",
+                    "path": "usage",
+                    "icon": "file-text"
+                  },
+                  {
+                    "title": "Configuration",
+                    "path": "configuration",
+                    "icon": "settings"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "API Reference",
+            "icon": "code",
+            "groups": [
+              {
+                "group": "Endpoints",
+                "openapi": "openapi.yaml",
                 "pages": []
+              }
+            ]
+          },
+          {
+            "tab": "Help Center",
+            "icon": "help-circle",
+            "pages": [
+              {
+                "title": "Help Center",
+                "path": "help-center",
+                "icon": "home"
+              },
+              {
+                "group": "FAQs",
+                "icon": "help-circle",
+                "expandable": false,
+                "pages": [
+                  {
+                    "title": "Getting API Access",
+                    "path": "help-center/faq/getting-api-access"
+                  }
+                ]
+              },
+              {
+                "group": "Troubleshooting",
+                "icon": "alert-circle",
+                "expandable": false,
+                "pages": [
+                  {
+                    "title": "Login Issues",
+                    "path": "help-center/troubleshooting/login-issues"
+                  }
+                ]
+              },
+              {
+                "group": "Guides",
+                "icon": "book-open",
+                "expandable": false,
+                "pages": [
+                  {
+                    "title": "New Project Guide",
+                    "path": "help-center/guides/new-project"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Changelog",
+            "icon": "clock",
+            "pages": [
+              {
+                "title": "Release History",
+                "path": "changelog",
+                "icon": "history"
               }
             ]
           }
         ]
       },
       {
-        "product": "Product 2",
+        "language": "Norsk",
         "pages": []
       }
     ]

@@ -1,0 +1,144 @@
+---
+title: Getting Started with Osprey Instrumentation
+description: Step-by-step guide to initial setup and first measurements using Osprey products, enabling users to install and verify functionality in under 30 minutes.
+---
+
+## Prerequisites
+
+<Callout kind="info" title="Before You Begin">
+Ensure you have:
+- Osprey Tilt String (OTS) or In-Place Extensometer (IPX) hardware kit
+- Data logger or compatible USB-to-serial adapter
+- Latest Osprey software installed (download from `https://ospreymeasurement.systems/support/`)
+- Power source (battery or mains adapter)
+- Computer with Python 3.8+ for scripting examples
+</Callout>
+
+Verify your environment meets these requirements to avoid setup issues.
+
+## Unboxing and Hardware Preparation
+
+Follow these steps to prepare your Osprey instrumentation:
+
+<Steps>
+  <Step title="Unbox the Kit" icon="package">
+    Open the shipping box and inventory components:
+    - Sensor cable (OTS: up to 150 micro-tilts; IPX: extensometer probes)
+    - Termination plugs
+    - Mounting brackets
+    - Quick-start guide
+  </Step>
+  <Step title="Inspect Components" icon="search">
+    Check for damage. Ensure all connectors match your data logger ports.
+  </Step>
+  <Step title="Power Up" icon="zap">
+    Connect the power adapter to the sensor bus end. LED should illuminate green.
+  </Step>
+</Steps>
+
+## Basic Installation
+
+Choose your product and follow the installation guide.
+
+<Tabs>
+  <Tab title="Osprey Tilt String (OTS)" icon="trending-up">
+    <Steps>
+      <Step title="Mount the Cable" icon="settings">
+        Secure the OTS cable vertically along the asset (wall, rail, or trench) using provided brackets. Space sensors as needed (e.g., every `{1m}` for high precision).
+      </Step>
+      <Step title="Embed or Bury" icon="database">
+        For concrete: Embed during pour. For trenches: Lay flat and cover.
+      </Step>
+    </Steps>
+  </Tab>
+  <Tab title="In-Place Extensometer (IPX)" icon="ruler">
+    <Steps>
+      <Step title="Position Probes" icon="target">
+        Install anchors at depth intervals. Connect probes to the serial bus.
+      </Step>
+      <Step title="Secure Assembly" icon="lock">
+        Tension the cable and seal against moisture.
+      </Step>
+    </Steps>
+  </Tab>
+</Tabs>
+
+<Callout kind="tip">
+Test continuity before final deployment: Short the first sensor and verify resistance changes.
+</Callout>
+
+## Connect to Data Logger or Software
+
+Connect your hardware to a computer or logger. Use these examples to read initial data.
+
+<CodeGroup tabs="Python,Node.js">
+  ```python
+  import serial
+  import time
+
+  ser = serial.Serial('/dev/ttyUSB0', 9600, timeout=1)
+  ser.write(b'INIT\n')
+  time.sleep(1)
+  data = ser.read(1024).decode('utf-8')
+  print(data)  # Expected: "OTS:150 sensors ready"
+  ser.close()
+  ```
+  ```javascript
+  const SerialPort = require('serialport');
+  const port = new SerialPort({ path: '/dev/ttyUSB0', baudRate: 9600 });
+
+  port.write('INIT\n', (err) => {
+    if (err) return console.error('Error:', err);
+    console.log('Initialization sent');
+  });
+
+  port.on('data', (data) => {
+    console.log('Response:', data.toString());  // Expected: "OTS:150 sensors ready"
+  });
+  ```
+</CodeGroup>
+
+Replace `/dev/ttyUSB0` with your port (e.g., `COM3` on Windows).
+
+## Run Your First Measurement
+
+Validate setup with a quick test:
+
+<Steps>
+  <Step title="Acquire Data" icon="play">
+    Run the connection script above. Tilt the sensor manually `{>5°}` and observe changes.
+  </Step>
+  <Step title="Validate Readings" icon="check-circle">
+    Expected output:
+    
+    | Sensor | Tilt (°) | Status  |
+    |--------|----------|---------|
+    | 1      | 0.12     | OK     |
+    | 2      | 0.05     | OK     |
+    | ...    | ...      | OK     |
+  </Step>
+  <Step title="Log First Dataset" icon="save">
+    Export to CSV via software: `osprey-logger --export first-measurement.csv`
+  </Step>
+</Steps>
+
+## Next Steps
+
+<Columns cols={2}>
+  <Card title="Authentication" icon="shield" href="/authentication">
+    Secure your data logger connections.
+  </Card>
+  <Card title="Advanced Configuration" icon="settings" href="/configuration">
+    Customize sensor spacing and thresholds.
+  </Card>
+  <Card title="Introduction" icon="book-open" href="/introduction">
+    Explore full product overview.
+  </Card>
+  <Card title="Changelog" icon="git-commit" href="/changelog">
+    Review latest updates.
+  </Card>
+</Columns>
+
+<Callout kind="success">
+Congratulations! Your Osprey instrumentation is ready. Proceed to field deployment.
+</Callout>

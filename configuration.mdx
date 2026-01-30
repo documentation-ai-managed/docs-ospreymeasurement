@@ -1,0 +1,147 @@
+---
+title: Sensor Configuration and Customization
+description: How to configure Osprey systems for specific project needs, including sensor spacing, thresholds, and integration with existing setups for optimized performance.
+---
+
+## Overview
+
+Configure your Osprey Measurement Systems sensors, such as the Osprey Tilt String (OTS) or In-Place Extensometer (IPX), to match project requirements. Adjust sensor density for precision monitoring, set data access points for streamlined collection, customize alerts for critical events, and configure environment variables for tool integration. These settings optimize performance in geotechnical and structural applications.
+
+<Callout kind="info">
+Review your project specifications before applying configurations. Test changes in a staging environment to avoid disrupting live monitoring.
+</Callout>
+
+## Adjusting Sensor Density and Spacing
+
+Tailor sensor spacing to balance precision and cost. For high-risk areas like diaphragm walls, use dense spacing (e.g., every `{0.5m}`). For general event detection on railways, opt for sparse spacing (e.g., every `{5m}`).
+
+<Columns cols={2}>
+  <Card title="Dense Configuration" icon="zap">
+    High precision for critical zones.
+    - Spacing: `{0.5m}` to `{1m}`
+    - Up to 150 sensors per string
+    - Ideal for tower cores
+  </Card>
+  <Card title="Sparse Configuration" icon="trending-up">
+    Cost-effective coverage.
+    - Spacing: `{3m}` to `{10m}`
+    - Fewer sensors for broad monitoring
+    - Suited for pipelines
+  </Card>
+</Columns>
+
+<Steps>
+  <Step title="Calculate Spacing" icon="ruler">
+    Measure asset length and divide by desired sensor count.
+  </Step>
+  <Step title="Update Firmware" icon="settings">
+    Connect to the sensor bus and flash new spacing via the configuration tool.
+  </Step>
+  <Step title="Verify Installation" icon="check-circle">
+    Run a calibration test to confirm readings.
+  </Step>
+</Steps>
+
+## Setting Up Data Access Points
+
+Centralize data collection with a single access point per sensor string. Use the OTS serial bus for up to 150 micro-tilts.
+
+<ParamField path="sensors" param-type="array" required="true">
+  Array of sensor positions along the cable.
+</ParamField>
+
+<ParamField query="access_point" param-type="string" required="true">
+  Single IP endpoint for all data, e.g., `https://api.example.com/ots/data`.
+</ParamField>
+
+```javascript
+// Example API call to set access point
+const config = {
+  access_point: 'https://api.example.com/ots/123',
+  sensors: [0.5, 1.0, 1.5, 2.0] // Positions in meters
+};
+
+await fetch('https://api.example.com/config', {
+  method: 'POST',
+  body: JSON.stringify(config)
+});
+```
+
+## Customizing Alerts and Thresholds
+
+Set tilt thresholds to trigger alerts for events like structural shifts. Customize per sensor or globally.
+
+<Tabs>
+  <Tab title="OTS Tilt String" icon="activity">
+    ```json
+    {
+      "tilt_threshold": 0.5,  // Degrees
+      "vibration_max": 10.0   // g-force
+    }
+    ```
+  </Tab>
+  <Tab title="IPX Extensometer" icon="ruler">
+    ```json
+    {
+      "strain_threshold": 0.01,  // Percentage
+      "alert_delay": 300         // Seconds
+    }
+    ```
+  </Tab>
+</Tabs>
+
+<ParamField body="thresholds" param-type="object" required="false">
+  Custom alert levels for tilt, strain, or vibration.
+</ParamField>
+
+## Environment Variable Setup for Tools
+
+Configure tools like the Osprey Data Viewer with environment variables. Use secure placeholders for credentials.
+
+<Tabs>
+  <Tab title="macOS/Linux" icon="terminal">
+    ```bash
+    export OSPREY_API_KEY=your-api-key-here
+    export OSPREY_ENDPOINT=https://api.example.com
+    osprey-tool --config load
+    ```
+  </Tab>
+  <Tab title="Windows" icon="monitor">
+    ```bash
+    set OSPREY_API_KEY=your-api-key-here
+    set OSPREY_ENDPOINT=https://api.example.com
+    osprey-tool.exe --config load
+    ```
+  </Tab>
+</Tabs>
+
+<CodeGroup tabs="JSON,YAML">
+  ```json
+  {
+    "api_key": "YOUR_API_KEY",
+    "endpoint": "https://api.example.com",
+    "poll_interval": 30
+  }
+  ```
+  ```yaml
+  api_key: YOUR_API_KEY
+  endpoint: https://api.example.com
+  poll_interval: 30s
+  ```
+</CodeGroup>
+
+<Expandable title="Advanced Integration" default-open="false">
+  Integrate with existing SCADA systems by mapping Osprey data to standard protocols like Modbus.
+
+  ```javascript
+  // Modbus mapping example
+  const modbusMap = {
+    tilt_1: { register: 40001, type: 'float' },
+    strain_1: { register: 40010, type: 'float' }
+  };
+  ```
+</Expandable>
+
+<Callout kind="tip">
+  After configuration, restart sensors and monitor logs for `{CONFIG_APPLIED}` messages.
+</Callout>

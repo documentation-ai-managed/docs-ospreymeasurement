@@ -1,0 +1,165 @@
+---
+title: Detailed Installation Guide
+description: Comprehensive instructions for deploying Osprey sensors in various environments, covering mounting options, cabling, and site preparation for reliable long-term monitoring.
+---
+
+## Prerequisites
+
+Before starting installation, ensure you have the necessary tools and site conditions.
+
+<Callout kind="info" title="Required Tools and Materials">
+- Osprey Tilt String (OTS) or In-Place Extensometer (IPX) sensor cable
+- Mounting brackets or concrete embed kits
+- Serial bus connectors and termination resistors
+- Cable protection conduits (PVC or HDPE)
+- Multimeter for continuity testing
+- Waterproof sealant and zip ties
+- Data logger compatible with RS-485 serial bus
+</Callout>
+
+Verify site conditions:
+- Temperature between `-40°C` and `+85°C`
+- No excessive vibration beyond sensor specs
+- Clear access for trenching or embedding
+
+## Site Assessment and Preparation
+
+Perform a thorough site survey to ensure optimal sensor placement.
+
+<Steps>
+  <Step title="Survey the Area" icon="map">
+    Identify mounting points along the asset (e.g., wall, pipeline). Mark positions every `1-5m` based on required resolution.
+  </Step>
+  <Step title="Prepare Surface" icon="tools">
+    Clean surfaces of debris, oil, or loose material. For trenches, excavate to `0.5m` depth.
+  </Step>
+  <Step title="Test Ground Conditions" icon="activity">
+    Check soil stability and moisture levels. Use a geotechnical probe if embedding in soil.
+  </Step>
+</Steps>
+
+<Callout kind="tip">
+  Document all measurements with photos and GPS coordinates for future reference.
+</Callout>
+
+## Mounting Techniques
+
+Choose the appropriate method based on your asset type. Follow these platform-specific instructions.
+
+<Tabs>
+  <Tab title="Concrete Embed (Diaphragm Wall)" icon="hard-drive">
+    <Steps>
+      <Step title="Position Sensors" icon="pin">
+        Lay the OTS cable in the wall formwork at desired depths.
+      </Step>
+      <Step title="Secure Cable" icon="lock">
+        Use embed clips spaced `0.5m` apart to fix the cable.
+      </Step>
+      <Step title="Pour Concrete" icon="droplets">
+        Ensure cable remains straight during pour. Cure for `48 hours`.
+      </Step>
+    </Steps>
+
+    ```mermaid
+    graph TD
+        A[Formwork] --> B[Place OTS Cable]
+        B --> C[Secure with Clips]
+        C --> D[Pour Concrete]
+        D --> E[Sensor Embedded]
+    ```
+  </Tab>
+  <Tab title="Trench Burial (Pipeline)" icon="digging">
+    <Steps>
+      <Step title="Dig Trench" icon="shovel">
+        Excavate `0.3m` wide by `0.6m` deep along pipeline route.
+      </Step>
+      <Step title="Lay Cable" icon="git-branch">
+        Place OTS parallel to pipeline, minimum `0.1m` separation.
+      </Step>
+      <Step title="Backfill" icon="package">
+        Cover with sand layer, then native soil. Compact in `0.15m` lifts.
+      </Step>
+    </Steps>
+  </Tab>
+  <Tab title="Surface Mount (Railway Wall)" icon="monitor">
+    <Steps>
+      <Step title="Attach Brackets" icon="settings">
+        Drill and bolt mounting brackets to wall every `2m`.
+      </Step>
+      <Step title="Route Cable" icon="zap">
+        Secure OTS to brackets with ties. Avoid sharp bends (`<30cm` radius).
+      </Step>
+      <Step title="Protect Exposed Sections" icon="shield">
+        Use conduit over vulnerable areas.
+      </Step>
+    </Steps>
+  </Tab>
+</Tabs>
+
+## Serial Bus Connections
+
+Connect multiple sensors (up to `150`) in a daisy-chain serial bus using RS-485 protocol.
+
+<Steps>
+  <Step title="Terminate Ends" icon="plug">
+    Add `120Ω` termination resistors at both cable ends.
+  </Step>
+  <Step title="Wire Connections" icon="network">
+    Connect A+ to A+, B- to B-, GND to GND at each junction.
+  </Step>
+  <Step title="Connect to Logger" icon="database">
+    Route bus to data logger. Use shielded cable for runs `>50m`.
+  </Step>
+  <Step title="Verify Continuity" icon="check-circle">
+    Use multimeter: Resistance between A/B should be `~120Ω`.
+  </Step>
+</Steps>
+
+<CodeGroup tabs="Python,JavaScript">
+  ```python
+  import serial
+
+  ser = serial.Serial('/dev/ttyUSB0', 9600, timeout=1)
+  ser.write(b'SENSOR_QUERY\n')
+  data = ser.read(1024)
+  print(data.decode())  # e.g., "TILT:0.05deg,0.02deg"
+  ```
+  ```javascript
+  const SerialPort = require('serialport');
+  const port = new SerialPort({ path: '/dev/ttyUSB0', baudRate: 9600 });
+  port.write('SENSOR_QUERY\n');
+  port.on('data', (data) => {
+    console.log(data.toString());  // e.g., "TILT:0.05deg,0.02deg"
+  });
+  ```
+</CodeGroup>
+
+## Environmental Protection and Embedding
+
+Protect sensors from harsh conditions for long-term reliability.
+
+<Expandable title="Advanced Protection Methods" default-open="false">
+  - **Conduit Use**: Sleeve cables in `IP68` rated PVC for burial.
+  - **Sealant Application**: Apply silicone around junctions (`>5mm` bead).
+  - **Vibration Damping**: Add foam padding under surface mounts.
+  - **Lightning Protection**: Install surge arrestors at logger entry.
+
+  | Method          | Environment     | Protection Level |
+  |-----------------|-----------------|------------------|
+  | PVC Conduit     | Buried          | High             |
+  | Silicone Seal   | Junctions       | Medium           |
+  | Surge Arrester  | Exposed Bus     | High             |
+</Expandable>
+
+<Columns cols={2}>
+  <Card title="Data Sheets" icon="file-text" href="https://ospreymeasurement.systems/wp-content/uploads/product/MS-DS10-OTS-01-Osprey-Tilt-String-Data-Sheet-1.4.pdf" target="_blank">
+    Download OTS specs.
+  </Card>
+  <Card title="Support Tools" icon="tool" href="https://ospreymeasurement.systems/support/">
+    Access calibration software.
+  </Card>
+</Columns>
+
+<Callout kind="success" title="Next Steps">
+  Power on the logger and verify readings at `https://dashboard.example.com`. Proceed to [Quickstart](/quickstart) for initial data validation.
+</Callout>

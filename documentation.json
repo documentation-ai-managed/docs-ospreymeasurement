@@ -27,6 +27,11 @@
                 "icon": "rocket",
                 "pages": [
                   {
+                    "group": "Sub Group",
+                    "pages": [],
+                    "icon": "activity"
+                  },
+                  {
                     "title": "Introduction",
                     "path": "introduction",
                     "icon": "home"

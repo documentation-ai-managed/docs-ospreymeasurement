@@ -28,23 +28,24 @@
                 "pages": [
                   {
                     "group": "Sub Group",
-                    "pages": [],
+                    "pages": [
+                      {
+                        "title": "Quickstart",
+                        "path": "quickstart",
+                        "icon": "zap"
+                      },
+                      {
+                        "title": "Installation",
+                        "path": "installation",
+                        "icon": "file-text"
+                      },
+                      {
+                        "title": "Introduction",
+                        "path": "introduction",
+                        "icon": "home"
+                      }
+                    ],
                     "icon": "activity"
-                  },
-                  {
-                    "title": "Introduction",
-                    "path": "introduction",
-                    "icon": "home"
-                  },
-                  {
-                    "title": "Quickstart",
-                    "path": "quickstart",
-                    "icon": "zap"
-                  },
-                  {
-                    "title": "Installation",
-                    "path": "installation",
-                    "icon": "file-text"
                   }
                 ]
               },

@@ -1,0 +1,210 @@
+---
+title: Equipment Preparation
+description: Ancillary requirements and IPX equipment overview including access tubes, magnetic targets, and data logger compatibility
+---
+
+## Ancillary Requirements
+
+### Extensometer Installation
+
+The In-Place Extensometer is used to automate the monitoring of standard magnetic extensometer installations, typically comprising an access tube with end caps, datum magnet, magnetic targets, telescoping sections, and reed switch probe.
+
+#### Access Tube Straightness
+
+It is important—both for ease of installing the IPX, and for general performance—that the magnetic extensometer access tube is installed as straight as possible. This can be achieved by using a heavy length of chain, attached to a rope, to weigh the access tube down from the bottom during grouting.
+
+<Callout kind="alert" title="Installation Conditions">
+  Some conditions may increase the likelihood of installations that are not straight. These include deep installations, installations where multiple grout stages are required, or installations with short distances between magnets.
+</Callout>
+
+<Callout kind="tip" title="Recommended Tube Diameter">
+  Osprey Measurement Systems recommend the use of **35mm ID access tube** to minimize the risk of the IPX bridging curves in the access tube and becoming stuck during installation or retrieval.
+</Callout>
+
+#### Access Tube – Coupled, Spigot or Flush Threaded
+
+**Specifications:**
+- Minimum internal diameter: **25mm**
+- Recommended: **35mm ID (Nom. 1¼")** access pipe
+- Larger diameter access pipe (e.g., 70mm inclinometer casing) may reduce system range, sensitivity and performance
+
+**Important Considerations:**
+- Top caps will be replaced by the IPX top support. A well-cover is recommended to protect the installation from damage, ingress of debris or fill material, or intrusion by wildlife
+- All internal joints should be smoothed with a pipe deburring tool to reduce damage to cables upon insertion and retraction of the IPX system
+- Coupled or spigot access tube should be compensated with telescoping/compression sections
+
+#### Magnetic Targets
+
+**Compatible Types:**
+- Spider type
+- Packer type
+- Pneumatic/hydraulically activated type
+- Plate type
+- Any other magnetic field based measurement magnet
+
+<Callout kind="alert" title="Magnetic Requirement">
+  The IPX operates by monitoring changes in a magnetic field. Therefore, the measurement magnets must be of magnetic type. The IPX will not work with non-magnetic systems such as rings used for induction-coil based systems.
+</Callout>
+
+**Configuration Considerations:**
+- The type and configuration of magnets used in magnetic targets may vary from one model to the next
+- The IPX may require configuration for optimum performance with your magnetic target type
+- A datum magnet grouted within a stable strata is used to reference the string to a fixed position
+- The datum magnet should not be fixed to the access tube. In some circumstances, forces on the access tube may displace the access tube itself, and this movement should not be transferred to the datum magnet
+
+#### Telescoping Sections
+
+**Bottom Supported Installations:**
+- Where telescoping sections are being used, sufficient clearance should be allowed within the well cover to accommodate the support rod stick-up as the installation consolidates
+
+**Suspended Installations:**
+- Ensure there is sufficient clearance between the bottom of the GRP supporting rod and the bottom of the access pipe to accommodate settlement
+
+#### Reed Switch Probe
+
+- A reed switch probe is required for initial survey/confirmation of magnet positions
+- The offset between the tape measurement gradations and the very tip of the probe should be known to allow the depth of the base of the access pipe to be measured
+- This is essential for correct positioning of the IPX in bottom supported installations
+
+#### Grouting Best Practices
+
+Grout serves to fill the annulus of the borehole, support the access casing, and mechanically couple the target magnets to the surrounding material.
+
+**Key Requirements:**
+- The grout mix must be sufficiently soft such that axial compressions and extensions of the ground are able to be accurately reflected in movement of the target magnet
+- Grout that is too firm is likely to decouple from the surrounding soil, and result in a stiff column that is not representative of the surrounding geotechnics
+- Grouts intended only for piezometric or lateral deformation monitoring are likely to be much too stiff for extensometer applications
+
+<Callout kind="alert" title="Mix Design">
+  General application of a Standard (e.g., ISO, DIN, BS) to determine grout ratios is unlikely to produce acceptable results, especially where these standards are intended for general geotechnical use, and not application specific.
+</Callout>
+
+**Best Practices:**
+- Modulus of deformation, rather than strength, should be the key metric in judging a mix
+- Variations in cements, bentonites, mix strategies and application techniques all have an impact on resultant grout
+- It is therefore highly unlikely that a priori mix specifications will produce intended results. Assessment must be made in situ
+- **If in doubt, softer mixes are always preferable**
+
+**Recommended Resource:**
+Mikkelsen, P. Erik. "Cement-bentonite grout backfill for borehole instruments." Geotechnical News 20.4 (2002): 38-42.
+
+### Data Logger
+
+The IPX operates on commands sent and received over an RS-485 serial bus. It has both an ASCII command set, and a ModBUS RTU interface.
+
+To interact with the IPX, a data logger must be:
+
+1. **Pre-configured** to be compatible with Osprey Measurement Systems' IPX
+
+   **OR**
+
+2. **Configurable** such that the delay, TX and RX commands can be user defined
+
+   **AND**
+
+3. **Able to provide** sufficient power and voltage to power the required number of IPX sensors
+
+#### Compatible Third-Party Loggers
+
+The following 3rd Party Loggers have out of the box support for the IPX:
+
+- Loadsensing Digital Node LS-G6-DIG-2
+- Ackcio Beam-DG
+- Senceive Digital Interface Node PDS-#3N1-DIN
+
+<Callout kind="info" title="Need Help?">
+  To confirm a data logging system's compatibility with the IPX, or for assistance with integrating the IPX with your preferred monitoring platform, please contact Osprey Measurement Systems' support team.
+</Callout>
+
+The IPX can be configured and monitored using a laptop, field PC or mobile device using a USB serial port interface.
+
+### Power Requirements
+
+The IPX will function between **4 to 16V**. An IPX that has been exposed to non-transitory voltages above 24V should be removed from service.
+
+#### Boot Power Consumption
+
+On powerup, IPX sensors are sequentially booted up one at a time starting with the closest sensor to the power source/data logger. This process takes ~100ms per sensor on the string.
+
+#### Measurement Power Consumption
+
+Polling of the IPX string results in sequential power use by each IPX.
+
+#### Idle Power Consumption
+
+Each IPX draws **4mA at 12V** in idle.
+
+## IPX Equipment
+
+### In-Place Extensometer
+
+An IPX system comprises of one or more IPX sensors. Prior to mobilizing the sensors to site, it is recommended users perform the checks detailed in the Initial Checks section.
+
+### Plastic Coated GRP Rod
+
+The GRP rod is used to provide fixed positions for the IPX, whether supported from the bottom or suspended from the top.
+
+**Specifications:**
+- Must be plastic coated – this provides better fixing for grub screws, reduces risk of damaging the rod and minimizes risk of injury during installation
+- Outer diameter: **6mm**
+
+**Osprey Supplied GRP Rod:**
+- 4mm diameter fiberglass core with high resin content for high tensile and compressive strength
+- 1mm thick polypropylene sheath for good longevity in submersed conditions
+
+<Callout kind="alert" title="Quality Matters">
+  Where GRP rod is being sourced locally, these features should be specifically requested. Unsatisfactory results have been observed where poor quality friable GRP rod has been used.
+</Callout>
+
+### Top Support
+
+The top support is used to steady the support rod at the top of the installation, or in top supported installations, suspend the string of IPX sensors.
+
+<Callout kind="info" title="Load Capacity">
+  OMS plastic coated GRP rod and grub screws tightened to a torque of 0.5Nm has been tested to a load of 30kg. This will allow suspension of 25 IPX sensors and 100m of rod.
+</Callout>
+
+Where more sensors are installed in a top supported configuration, we recommend the use of a split shaft collar for additional support.
+
+### Bottom Support
+
+The bottom support is used to center and protect the support rod during installation and when sitting on the bottom of the access tube. It should be used in all cases, regardless of whether the installation is top supported or bottom supported.
+
+### GRP Rod Coupling
+
+The GRP rod coupling is used where a rod needs to be extended due to embankment raising necessitating the extension of the extensometer. It aligns the two sections of rod and provides both tensile and compressive coupling strength.
+
+### Cable
+
+The IPX is supplied with cable according to order.
+
+**Cable Specifications:**
+- 2 twisted pair
+- 0.5 mm² copper conductors
+- 5.5mm OD
+- Polyurethane Jacket
+
+<Callout kind="alert" title="Cable Protection">
+  The cable has a reduced quantity of outer jacket material to support tight bend radius, and therefore is vulnerable to pinch and puncture damage. Significant precautions should be made to protect the cable during installation. The cable will fail if subject to greater than 50N of tensile load.
+</Callout>
+
+### Wiring Guide
+
+| Function | IPX Cable 5.5mm | IPX Cable 6.5mm | Connector Cable | Connector Pin |
+|----------|----------------|----------------|-----------------|---------------|
+| Ground | Black | Brown | Brown | 1 |
+| RS485 A | Blue | Green | Green | 2 |
+| RS485 B | White | Yellow | Yellow | 3 |
+| 4-16VDC | Brown | White | White | 4 |
+
+### In-Line Connectors
+
+In-line connectors are used to allow quick and easy on-site connection between IPXs or at the top of the IPX string. Connectors are recommended where an IPX string is expected to be extended or shortened after installation.
+
+<Callout kind="tip" title="Connector Usage">
+  A small amount of silicon grease should be applied to the conductors prior to connecting to ensure a competent connection and longevity of the connectors.
+</Callout>
+
+**Connector Configuration:**
+- Male (plug) connectors are used for the top of IPX
+- Female (socket) connectors are used for the bottom of the IPX, or with flying leads for connection to a data logger

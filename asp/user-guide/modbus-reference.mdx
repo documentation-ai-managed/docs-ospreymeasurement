@@ -1,0 +1,108 @@
+---
+title: MODBUS Reference
+description: Complete MODBUS register map and status codes for ASP system
+---
+
+## MODBUS Register Map
+
+The following table provides the complete MODBUS register map for the ASP system.
+
+### Measurement Registers
+
+| Register (Hex) | Register (Dec) | Description | Data Size | Units | Domain |
+|----------------|----------------|-------------|-----------|-------|--------|
+| 0xFE | 254 | Pressure MSW | Float 2dp | Pa | 0 to 1,000,000 |
+| 0xFF | 255 | Pressure LSW | Float 2dp | Pa | 0 to 1,000,000 |
+| 0x100 | 256 | Distance MSW | Float 2dp | mm | -10,000 to +10,000 |
+| 0x101 | 257 | Distance LSW | Float 2dp | mm | -10,000 to +10,000 |
+| 0x102 | 258 | Voltage MSW | Float 2dp | V | 0 to 24 |
+| 0x103 | 259 | Voltage LSW | Float 2dp | V | 0 to 24 |
+| 0x104 | 260 | Temperature MSW | Float 2dp | °C | -20 to +60 |
+| 0x105 | 261 | Temperature LSW | Float 2dp | °C | -20 to +60 |
+| 0x117 | 279 | Measurement Status | Int16 | - | See status table |
+
+<Callout kind="info" title="Float Data Type">
+  Float values are stored in two consecutive 16-bit registers (MSW = Most Significant Word, LSW = Least Significant Word).
+</Callout>
+
+### Device Information Registers
+
+| Register (Hex) | Register (Dec) | Description | Data Type |
+|----------------|----------------|-------------|-----------|
+| 0x200 | 512 | Alias / Bus Address | Uint16 |
+| 0x201 | 513 | Product ID | String "AS" |
+| 0x202 | 514 | Product ID | String "P\n" |
+| 0x209 | 521 | Serial Number MSW | Uint32 |
+| 0x20A | 522 | Serial Number LSW | Uint32 |
+| 0x20B | 523 | Software Rev MSW | Uint32 |
+| 0x20C | 524 | Software Rev LSW | Uint32 |
+| 0x20D | 525 | Hardware Rev MSW | Uint32 |
+| 0x20E | 526 | Hardware Rev LSW | Uint32 |
+
+## Measurement Status Codes
+
+The Measurement Status register (0x117 / 279) provides information about the current state of the sensor measurement.
+
+| Status Byte | Osprey Error Code | Description |
+|-------------|-------------------|-------------|
+| 0 | N/A | Measurement OK |
+| 1 | -99 | Measurement Not Ready |
+| 2 | -98 | Pressure value outside threshold |
+| 3 | -97 | Sensor reports an internal error |
+| 4 | -96 | Insufficient power |
+
+### Status Code Descriptions
+
+#### Status 0 - Measurement OK
+The sensor is functioning normally and the measurement is valid.
+
+#### Status 1 - Measurement Not Ready
+The sensor is in the process of taking a measurement. Wait and retry.
+
+#### Status 2 - Pressure Value Outside Threshold
+The measured pressure is outside the expected operating range. This may indicate:
+- Sensor is not properly installed
+- System has been damaged
+- Extreme environmental conditions
+
+#### Status 3 - Sensor Internal Error
+The sensor has detected an internal fault. Contact Osprey Measurement Systems for support.
+
+#### Status 4 - Insufficient Power
+The supply voltage is below the minimum operating threshold. Check:
+- Power supply voltage (should be 8-18V)
+- Cable connections
+- Total power draw on the bus
+
+<Callout kind="alert" title="Error Handling">
+  If you consistently receive error codes 2, 3, or 4, stop data collection and contact Osprey Measurement Systems support for assistance.
+</Callout>
+
+## Reading MODBUS Registers
+
+### Example: Reading Distance
+
+To read the distance measurement:
+
+1. Read registers 0x100 (256) and 0x101 (257)
+2. Combine MSW and LSW to form a 32-bit float value
+3. The result is the distance in millimeters
+
+### Example: Reading Temperature
+
+To read the temperature measurement:
+
+1. Read registers 0x104 (260) and 0x105 (261)
+2. Combine MSW and LSW to form a 32-bit float value
+3. The result is the temperature in degrees Celsius
+
+<Callout kind="tip" title="Data Logger Integration">
+  Most industrial data loggers with MODBUS RTU support can automatically handle 32-bit float reads from consecutive registers. Refer to your data logger's documentation for specific configuration instructions.
+</Callout>
+
+## Support
+
+For technical support with MODBUS integration, please contact:
+
+- **Email**: support@ospreymeasurement.com
+- **Support Portal**: support.ospreymeasurement.systems

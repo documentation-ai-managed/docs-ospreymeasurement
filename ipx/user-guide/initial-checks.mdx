@@ -1,0 +1,159 @@
+---
+title: Initial Checks & Configuration
+description: Physical inspection, functional testing, and configuration procedures for IPX sensors
+---
+
+## Initial Checks
+
+While Osprey Measurement Systems' instruments undergo rigorous testing prior to dispatch, it is best practice to test all devices on receipt and prior to mobilizing to site to confirm no damage during shipments and to verify performance with your intended magnetic targets.
+
+### Physical Check
+
+Visually inspect the device for any obvious blemishes or non-conformances:
+
+- Check for obvious damage to the IPX body and end pieces
+- Check the cable for damage, particularly at the cable entry on the stainless-steel end piece
+- Check the serial number is clearly marked and consistent with the Certificate of Conformity issued with the IPX
+- Check the grub screws are present and in good condition
+
+### Function Check
+
+#### Check Electrical Behavior
+
+- Ensure no shorts across wires
+- Power up and measure current draw to ensure it is within expected range
+
+#### Check Communication
+
+Use the connection process to connect to a single instrument or string of instruments using a serial port interface.
+
+**Send command:**
+```
+op ipx 0 list_uids\n
+```
+
+<Callout kind="info" title="Note">
+  `\n` indicates the new line character, 0x0A
+</Callout>
+
+Check the UIDs returned match the serial numbers etched on the IPXs from nearest device down the string.
+
+#### Check Measurement
+
+1. Connect to the instrument using a serial port interface
+2. Position a magnetic target along the IPX – make sure the IPX is inside the magnetic target and roughly central to its diameter
+3. Send command: `op ipx [UID] measure\n` where `[UID]` is the serial number of the device excluding hyphens
+
+**Expected response:**
+```
+nnnnnnnnnn, mm.mmm, tt.ttt
+```
+
+Where:
+- `n` = serial number
+- `m` = magnet position measurement
+- `t` = sensor temperature reading
+
+The magnet position measurement should be a positive number between 0.00 and 430.00.
+
+4. Take a note of the magnet position measurement, move the magnet up or down the IPX and send the measure command again
+
+**Movement interpretation:**
+- Moving the magnet down the IPX should return a positive change in measurement
+- Moving the magnet up should return a negative change in measurement
+
+#### Perform Checks Using a Data Logger
+
+If you are using an open platform data logger (such as those manufactured by Campbell Scientific or National Instruments) you can use the commands to test the sensor.
+
+<Callout kind="tip" title="Sample Programs">
+  Contact Osprey Support for a sample Campbell Scientific program.
+</Callout>
+
+**Testing procedure:**
+1. Place a magnet along the IPX in a stable position
+2. Follow the manufacturer's guidelines to take a measurement reading from the IPX
+3. Move the magnet a known distance and retake the measurement
+4. Confirm the output
+
+## Configuration
+
+The IPX is shipped with default settings applied. To apply the settings appropriate to your project, follow the steps outlined below.
+
+### Connecting to the IPX
+
+Link the IPX to your data logger or RS-485 USB adaptor as per the wiring table.
+
+**Serial Port Settings:**
+
+| Parameter | Value |
+|-----------|-------|
+| Baud | 9,600* |
+| Parity | None |
+| Data Bits | 8 |
+| Stop Bits | 1 |
+| Flow Control | None |
+
+<Callout kind="info" title="Baud Rate">
+  *Sensors are supplied with 9600 baud as a standard. Where 115,200 is required, refer to the Set Baud Rate section for details on how to set the baud rate manually.
+</Callout>
+
+### Commands
+
+You can send commands using the prefix `op ipx [#]` and the termination character `\n` (LF, 0x0A), where `[#]` is used to address the intended device. If only one device is connected, you can use the broadcast address `"0"`.
+
+<Callout kind="alert" title="Broadcast Address">
+  If you use the broadcast address when more than one sensor is connected, they will try to respond to the command simultaneously and the response will be incoherent.
+</Callout>
+
+To view the IPX help file, send the command `op ipx [#] help\n`. The addressed IPX will respond with the list of available commands.
+
+### Available Commands
+
+| Command | Action | Response | Notes |
+|---------|--------|----------|-------|
+| `get_status` | Prints IPX status information | HW and SW version, Current user defined settings | |
+| `get_version` | Prints device hardware and software versions | e.g., IPX_Sys: HW = 7.0.0 SW = 4.8.5 | Log in to OMS support site to view version history |
+| `get_vin` | Prints the voltage measured at the input of the IPX | The measured input voltage in volts (3 decimal places) | Can be used to assure the bus is powered with high enough voltage |
+| `help` | Prints help menu | Prints help menu | |
+| `list_uids` | Prints UIDs of IPX sensors in sequence | UID of each IPX in order | Can only be used with a single string of IPX sensors |
+| `measure` | Performs a distance measurement and prints the result in mm | Serial Number, Magnet position in mm, Temperature in °C | e.g., 102080123,70.713,25.675 |
+| `set_alias` | Sets the alias and Modbus address (1-247) | Returns the new Modbus alias | |
+| `set_baud` | Sets the baudrate of the IPX | Displays the baud rate and then resets the device | Can be set to 9600 or 115200 only |
+
+**Command Examples:**
+- To retrieve version details: `op ipx 1020403083 get_version\n`
+- To set baud rate: `op ipx 1020402045 set_baud 9600\n`
+
+### Data Logger Specific Settings
+
+#### Baud Rate
+
+The baud rate of the IPX should be set to match the baud rate of the data logger being used.
+
+**Command:**
+```
+op ipx [#] set_baud [rate]\n
+```
+
+Where `[#]` is the serial number and `[rate]` is either 9600 or 115200.
+
+#### Unique Identifier
+
+Where a data logger device will only accept an 8 digit serial number/UID, the first two digits from the UID should be clipped.
+
+**Example:** UID 1020801234 becomes UID 20801234
+
+#### Geosense Protocol
+
+The IPX can be used with any data logger that is already compatible with the Geosense digital tilt sensor/IPI, with the following considerations:
+
+- Baud rate of the IPX must be set to 9600
+- UIDs/sensor addresses used must be 8 digits
+- Magnet position measurement is given in meters under Axis B
+- Axis A will return "error"
+- IPX error codes are reported as 10⁻³ (e.g., -99 will be returned on Axis B as -0.099)
+
+#### Modbus Protocol
+
+See the MODBUS Reference section for details on communicating with the IPX via Modbus.

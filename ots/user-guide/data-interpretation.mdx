@@ -1,0 +1,84 @@
+---
+title: Data Interpretation
+description: Understanding Roll, Pitch, Yaw outputs and orientation measurements from OTS sensors
+---
+
+## Overview
+
+For most applications, the Roll, Pitch, Yaw outputs should be sufficient.
+
+**All outputs are in units of Radians.**
+
+## Orientation
+
+### Roll
+
+**Device laid flat is at 0 radians.**
+
+Looking along device from rear towards logger, clockwise is positive.
+
+```
+Flat Position: 0 radians
+Clockwise Rotation: Positive values
+Counterclockwise Rotation: Negative values
+```
+
+<Callout kind="info" title="Note">
+  Roll measurements are meaningless in vertical applications.
+</Callout>
+
+### Pitch
+
+**Device laid flat is 0 radians.**
+
+Forward pitch is positive.
+
+```
+Flat Position: 0 radians
+Forward Pitch: Positive values
+Backward Pitch: Negative values
+```
+
+### Yaw
+
+**Device pointing up is 0 radians.**
+
+Looking onto the top of the lid, clockwise is positive.
+
+```
+Pointing Up: 0 radians
+Clockwise Rotation: Positive values
+Counterclockwise Rotation: Negative values
+```
+
+<Callout kind="info" title="Note">
+  Yaw measurements are meaningless in horizontal applications.
+</Callout>
+
+## Rotations Around the Gravitational Vector
+
+As this is a gravitational sensor, only two of these parameters are valid at any one time:
+
+| Application Type | Valid Parameters | Meaningless Parameter |
+|-----------------|------------------|----------------------|
+| Horizontal | Roll, Pitch | Yaw |
+| Vertical | Pitch, Yaw | Roll |
+
+### Understanding Gravitational Limitations
+
+The OTS uses a triaxial accelerometer to measure orientation relative to gravity. This means:
+
+- **In horizontal applications** (e.g., railway tracks, bridge decks): The sensor can measure tilt in two directions (Roll and Pitch), but cannot determine rotation around the vertical axis (Yaw) because this axis is aligned with gravity.
+
+- **In vertical applications** (e.g., retaining walls, building facades): The sensor can measure tilt away from vertical in two directions (Pitch and Yaw), but cannot determine rotation around the vertical axis (Roll) because this axis is aligned with gravity.
+
+<Callout kind="tip" title="Application-Specific Interpretation">
+  Always consider your installation orientation when interpreting sensor data. Focus on the two valid parameters for your specific application type.
+</Callout>
+
+## Support
+
+For further support and documentation, please contact:
+
+- **Email**: support@ospreymeasurement.com
+- **Support Portal**: support.ospreymeasurement.systems

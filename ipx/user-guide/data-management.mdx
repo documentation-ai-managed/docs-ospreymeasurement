@@ -1,0 +1,131 @@
+---
+title: Data Management
+description: Data logging, conversion formulas, and interpretation of IPX measurements
+---
+
+## Data Logging
+
+For data logger requirements, see the Equipment Preparation section.
+
+For instructions on connecting your IPX string to your data logger or PC, see the Initial Checks & Configuration section.
+
+## Data Conversion
+
+The IPX provides three condition reports:
+- Magnet position in mm
+- Sensor temperature in degrees Celsius
+- Bus voltage at sensor
+
+### Magnet Position
+
+**Command:**
+```
+op ipx [10 digit S/N] measure\n
+```
+
+**Response:**
+```
+1020104001,70.100,25.4
+```
+
+**Units:** mm
+
+The IPX is marked with approximate measurement results on the underside of the housing. This is only approximate and acts as a tool for positioning the IPX during installation.
+
+#### Interpreting Changes
+
+| Change Direction | Meaning |
+|-----------------|---------|
+| Negative (-) change | Sensor moved down relative to magnet |
+| Positive (+) change | Sensor moved up relative to magnet |
+
+<Callout kind="info" title="Understanding Movement">
+  Remember that the IPX measures the position of the magnet relative to itself. A positive change means either the sensor moved up or the magnet moved down relative to the fixed datum.
+</Callout>
+
+### Sensor Temperature
+
+The temperature reading is provided in degrees Celsius and can be used for:
+- Environmental monitoring
+- Verification of system operation
+- Temperature compensation calculations if required
+
+**Response Format:**
+```
+Serial Number, Magnet Position (mm), Temperature (°C)
+```
+
+### Bus Voltage
+
+**Command:**
+```
+op ipx [10 digit S/N] get_vin\n
+```
+
+**Response:**
+```
+5.094
+```
+
+**Units:** Volts
+
+#### Voltage Drop Considerations
+
+Voltage drop should be considered when designing:
+- Deep installations
+- Installations with long cable runs
+- Installations with many sensors
+
+<Callout kind="tip" title="Voltage Monitoring">
+  Once installed, the reported input voltage to each sensor can be obtained over the RS-485 bus, allowing final site-optimization of system supply voltage.
+</Callout>
+
+A voltage drop calculator can be used to estimate supply voltage requirements before attendance at site, however these estimates are subject to several assumptions and can be inaccurate.
+
+## Measurement Status Codes
+
+The IPX returns status codes to indicate the quality and validity of measurements:
+
+| Status Code | Error Code | Description | Recommended Action |
+|-------------|------------|-------------|-------------------|
+| 0 | N/A | Measurement OK | Normal operation |
+| 1 | -99 | No magnet within measurement range | Check magnet position, verify expected settlement/heave |
+| 2 | -98 | Standard deviation exceeds threshold | Check for vibration, magnetic interference, or unstable conditions |
+| 3 | -97 | Sensor reports an internal error | Contact Osprey support |
+| 4 | -96 | Insufficient power | Check power supply voltage and cable connections |
+
+<Callout kind="alert" title="Error Resolution">
+  If you consistently receive error codes 2, 3, or 4, stop data collection and contact Osprey Measurement Systems support for assistance. For error code 1, verify the magnet is still within the measurement range of the sensor.
+</Callout>
+
+## Data Interpretation Best Practices
+
+### Baseline Reading
+
+- Take baseline readings 24-48 hours after installation to allow the system to stabilize
+- Document initial magnet positions relative to each sensor
+- Record environmental conditions at the time of baseline reading
+
+### Regular Monitoring
+
+- Monitor bus voltage regularly, especially for deep or long installations
+- Check temperature readings to ensure sensors are operating within specifications
+- Verify that all sensors are returning valid measurements (status code 0)
+
+### Anomaly Detection
+
+Watch for:
+- Sudden changes in reading that don't correlate with known site activities
+- Gradual drift in readings from sensors that should be stable (datum magnet)
+- Inconsistent readings between adjacent sensors
+
+<Callout kind="tip" title="Data Validation">
+  Compare IPX readings with manual extensometer probe measurements periodically to validate system accuracy and identify any calibration drift.
+</Callout>
+
+## Support
+
+For further assistance with data collection and interpretation, please contact:
+
+- **Email**: support@ospreymeasurement.com
+- **Support Portal**: support.ospreymeasurement.systems

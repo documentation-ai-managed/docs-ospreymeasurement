@@ -1,0 +1,170 @@
+---
+title: MODBUS Reference
+description: Complete MODBUS RTU protocol specification and register maps for IPX system
+---
+
+## Overview
+
+In order to facilitate compatibility with diverse logging systems, two register maps are provided, based on word order:
+- **Leading MSW (Most Significant Word)** - Recommended for new applications
+- **Leading LSW (Least Significant Word)** - Scheduled to be deprecated in Q2 2025
+
+<Callout kind="alert" title="Deprecation Notice">
+  The Leading LSW register map is scheduled to be deprecated in Q2 2025. It is not recommended for new applications.
+</Callout>
+
+## Device Configuration
+
+### Device Address
+
+The device Modbus address is the alias address set using the `set_alias` command.
+
+<Callout kind="alert" title="Broadcast Address">
+  IPX's will not respond to the broadcast address "0" over Modbus.
+</Callout>
+
+## Leading MSW Register Map (Recommended)
+
+### Trigger Measurement
+
+To initiate a measurement, write any value to address **0x63** using the Write Single Registers (0x06) function. This will update all fields.
+
+### Register Table
+
+| Register (Hex) | Register (Dec) | Description | Data Type | Units |
+|----------------|----------------|-------------|-----------|-------|
+| 0x135 | 309 | Measurement Status | Signed Integer | See status table |
+| 0x136 | 310 | Distance MSW | Float | mm |
+| 0x137 | 311 | Distance LSW | Float | mm |
+| 0x139 | 313 | Temperature MSW | Float | °C |
+| 0x13A | 314 | Temperature LSW | Float | °C |
+| 0x13C | 316 | Voltage MSW | Float | V |
+| 0x13D | 317 | Voltage LSW | Float | V |
+| 0x13F | 319 | Software Rev MSW | Uint32 | - |
+| 0x140 | 320 | Software Rev LSW | Uint32 | - |
+| 0x142 | 322 | Hardware Rev MSW | Uint32 | - |
+| 0x143 | 323 | Hardware Rev LSW | Uint32 | - |
+| 0x145 | 325 | Serial Number MSW | Uint32 | - |
+| 0x146 | 326 | Serial Number LSW | Uint32 | - |
+
+<Callout kind="info" title="Float Data Type">
+  Float values are stored in two consecutive 16-bit registers (MSW = Most Significant Word, LSW = Least Significant Word).
+</Callout>
+
+## Leading LSW Register Map (Legacy)
+
+<Callout kind="alert" title="Deprecated">
+  This map is scheduled to be deprecated in Q2 2025. It is not recommended for new applications.
+</Callout>
+
+### Trigger Measurement
+
+To initiate a measurement, write any value to address **0x118** using the Write Single Registers (0x06) function. This will update all fields.
+
+### Register Table
+
+| Register (Hex) | Register (Dec) | Description | Data Type | Units |
+|----------------|----------------|-------------|-----------|-------|
+| 0x100 | 256 | Distance LSW | Float | mm |
+| 0x101 | 257 | Distance MSW | Float | mm |
+| 0x102 | 258 | Voltage LSW | Float | V |
+| 0x103 | 259 | Voltage MSW | Float | V |
+| 0x104 | 260 | Temperature LSW | Float | °C |
+| 0x105 | 261 | Temperature MSW | Float | °C |
+| 0x117 | 279 | Measurement Status | Signed Integer | See status table |
+| 0x200 | 512 | Alias / Bus Address | Uint16 | - |
+| 0x201 | 513 | Device ID | String | "IP" |
+| 0x202 | 514 | Device ID | String | "X\n" |
+| 0x209 | 521 | Serial Number LSW | Uint32 | - |
+| 0x20A | 522 | Serial Number MSW | Uint32 | - |
+| 0x20B | 523 | Software Rev LSW | Uint32 | - |
+| 0x20C | 524 | Software Rev MSW | Uint32 | - |
+| 0x20D | 525 | Hardware Rev LSW | Uint32 | - |
+| 0x20E | 526 | Hardware Rev MSW | Uint32 | - |
+
+## Measurement Status Codes
+
+| Status Byte | Osprey Error Code | Description |
+|-------------|-------------------|-------------|
+| 0 | N/A | Measurement OK |
+| 1 | -99 | No magnet within measurement range |
+| 2 | -98 | Standard deviation exceeds threshold |
+| 3 | -97 | Sensor reports an internal error |
+| 4 | -96 | Insufficient power |
+
+### Status Code Details
+
+#### Status 0 - Measurement OK
+The sensor is functioning normally and the measurement is valid.
+
+#### Status 1 - No Magnet Within Measurement Range
+The magnet is not detected within the sensor's measurement range. This may indicate:
+- Excessive settlement or heave beyond the sensor's measurement capability
+- Magnet has been displaced
+- Sensor positioning error during installation
+
+#### Status 2 - Standard Deviation Exceeds Threshold
+The measurement is unstable or inconsistent. This may be caused by:
+- Vibration affecting the sensor
+- Magnetic interference from nearby sources
+- Unstable environmental conditions
+
+#### Status 3 - Sensor Internal Error
+The sensor has detected an internal fault. Contact Osprey Measurement Systems for support.
+
+#### Status 4 - Insufficient Power
+The supply voltage is below the minimum operating threshold. Check:
+- Power supply voltage (should be 4-16V)
+- Cable connections
+- Total power draw on the bus
+- Voltage drop calculations for deep installations
+
+## Reading MODBUS Registers
+
+### Example: Reading Distance (Leading MSW)
+
+To read the distance measurement:
+
+1. Trigger measurement by writing to register 0x63
+2. Read registers 0x136 (MSW) and 0x137 (LSW)
+3. Combine MSW and LSW to form a 32-bit float value
+4. The result is the distance in millimeters
+
+### Example: Reading Temperature (Leading MSW)
+
+To read the temperature measurement:
+
+1. Trigger measurement by writing to register 0x63
+2. Read registers 0x139 (MSW) and 0x13A (LSW)
+3. Combine MSW and LSW to form a 32-bit float value
+4. The result is the temperature in degrees Celsius
+
+<Callout kind="tip" title="Data Logger Integration">
+  Most industrial data loggers with MODBUS RTU support can automatically handle 32-bit float reads from consecutive registers. Refer to your data logger's documentation for specific configuration instructions.
+</Callout>
+
+## Troubleshooting
+
+### Communication Issues
+
+If you cannot communicate with the IPX via Modbus:
+1. Verify the correct Modbus alias is set on the sensor
+2. Check RS-485 wiring (A, B, Ground, Power)
+3. Verify baud rate matches between sensor and logger (9600 or 115200)
+4. Ensure no other devices on the bus have the same address
+5. Check power supply voltage at the sensor
+
+### Invalid Readings
+
+If readings appear invalid or erratic:
+1. Check the measurement status code
+2. Verify power supply voltage is within specification
+3. Check for sources of electromagnetic interference
+4. Verify magnet is within sensor's measurement range
+
+## Support
+
+For technical support with MODBUS integration, please contact:
+
+- **Email**: support@ospreymeasurement.com
+- **Support Portal**: support.ospreymeasurement.systems

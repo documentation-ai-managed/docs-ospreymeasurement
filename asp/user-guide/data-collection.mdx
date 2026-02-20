@@ -1,0 +1,114 @@
+---
+title: Data Collection & Management
+description: Wiring, protocols, and data conversion formulas for ASP system communication
+---
+
+## Overview
+
+Communication with the ASP nodes is done via an RS485 interface. This can be a serial port interface or a digital data logger.
+
+## Wiring Guide
+
+The ASP wiring configuration is as follows:
+
+| Colour | Function | Connector Pin |
+|--------|----------|---------------|
+| Red | 8-18V | 4 |
+| Black | Ground (G) | 1 |
+| Blue | RS485 A | 2 |
+| White | RS485 B | 3 |
+
+## Addresses
+
+Nodes can be addressed using their Modbus alias which starts at **"1"** from the node closest to the cable entry point and are numbered sequentially along the length of the ASP.
+
+## RS485 Protocols
+
+### Serial Configuration
+
+ASP nodes communicate via RS485 using the following serial settings:
+
+| Parameter | Value |
+|-----------|-------|
+| Baud | 9600 |
+| Data Bits | 8 |
+| Parity | None |
+| Stop Bits | 1 |
+| Flow Control | None |
+
+### MODBUS RTU
+
+Modbus offers the most robust communication with the ASP nodes. A complete set of MODBUS registers can be found in the MODBUS Reference section.
+
+<Callout kind="info" title="Data Logger Configuration">
+  Refer to the data logger manufacturer's literature for instructions on how to configure the device using Modbus RTU.
+</Callout>
+
+<Callout kind="tip" title="Compatibility Check">
+  To confirm compatibility with your data logger, please contact Osprey Measurement Systems.
+</Callout>
+
+### ASCII
+
+The ASCII protocol offers a user-readable means of communicating with the ASP nodes, allowing the user to adjust common settings, take readings or troubleshoot the system using a laptop or Android mobile device.
+
+<Callout kind="info" title="ASCII Interface">
+  For more information on using the ASCII interface, please refer to the Serial USB Terminal user guide or RealTerm user guide.
+</Callout>
+
+## Data Conversion
+
+The ASP nodes carry out onboard conversion of pressure to mm head. Change in elevation is relative to the reference sensor(s). To calculate the current elevation of a measurement node, the following calculations are used:
+
+### Change in Relative Elevation
+
+#### Fixed Reference Sensor
+
+If the elevation of the reference sensor is assumed to be fixed:
+
+```
+Δeₙ = Δₙ - Δᵣ
+```
+
+**Where:**
+- `Δeₙ` = change in relative elevation of a given node
+- `Δₙ` = n₁ - n₀ = current reading at node n minus initial reading at node n
+- `Δᵣ` = r₁ - r₀ = current reading at reference sensor, or the mean of readings from multiple reference sensors minus initial reference reading
+
+#### Derived Reference
+
+If the elevation of the reference is derived:
+
+```
+Δeₙ = Δₙ - Δᵣ + Δd
+```
+
+**Where:**
+- `Δeₙ` = change in relative elevation of a given node
+- `Δₙ` = n₁ - n₀ = current reading at node n minus initial reading at node n
+- `Δᵣ` = r₁ - r₀ = current reading at reference sensor, or the mean of readings from multiple reference sensors minus the initial reading at the reference sensor(s)
+- `Δd` = d₁ - d₀ = current reading of the external reference minus the initial reading
+
+### Absolute Elevation
+
+To calculate the absolute elevation of a measurement node:
+
+```
+Eₙ₁ = Δeₙ + Eₙ₀
+```
+
+**Where:**
+- `Eₙ₁` = Current reduced level of a given node
+- `Δeₙ` = change in relative elevation as described above
+- `Eₙ₀` = Initial reduced level of node at time of installation
+
+<Callout kind="tip" title="Calculation Example">
+  Always record initial elevations (Eₙ₀) during installation and the baseline reading period to enable accurate absolute elevation calculations.
+</Callout>
+
+## Support
+
+For further assistance with data collection and interpretation, please contact:
+
+- **Email**: support@ospreymeasurement.com
+- **Support Portal**: support.ospreymeasurement.systems

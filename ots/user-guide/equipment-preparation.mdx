@@ -1,0 +1,150 @@
+---
+title: Equipment Preparation
+description: Prepare your OTS equipment for installation including mounting options, data logger setup, and initial checks
+---
+
+## Ancillary Requirements
+
+### Mounting Options
+
+Correct mounting of the OTS is of paramount importance to measurement performance. Osprey Measurement Systems offer a range of mounting options to accommodate various applications; however it is the installer's responsibility to ensure the mounting option selected is appropriate for the task.
+
+#### Considerations
+
+When selecting a mounting option, consider the following:
+
+- Material of the monitored structure
+- Duration of monitoring
+- Anticipated movement under observation
+- Exposure to change or stress during installation
+- Sources of movement or stress during the monitoring period
+- Impact of mounting method on the monitored structure
+- Sources of vibration and their impact on measurement performance
+
+### Data Logger
+
+The OTS operates on commands sent and received over an RS-485 serial bus. It has both an ASCII command set, and a ModBUS RTU interface.
+
+To interact with the OTS, a data logger must be:
+
+1. **Pre-configured** to be compatible with Osprey Measurement Systems' OTS
+
+   **OR**
+
+2. **Configurable** such that the commands can be user defined
+
+   **AND**
+
+3. **Able to provide** sufficient power and voltage to power the required number of sensors
+
+#### Compatible Third-Party Loggers
+
+The following 3rd Party Loggers have out of the box support for the OTS:
+
+- Loadsensing Digital Node LS-G6-DIG-2
+- Ackcio Beam-DG
+- Sencieve Digital Interface Node
+- Wisen Digital Interface Node
+
+<Callout kind="info" title="Need Help?">
+  To confirm a data logging system's compatibility with the OTS, or for assistance with integrating the OTS with your preferred monitoring platform, please contact Osprey Measurement Systems' support team.
+</Callout>
+
+The OTS can be configured and monitored using a laptop, field PC or mobile device using a USB serial port interface.
+
+### Power Requirements
+
+The OTS will function between **5 to 18V**. An OTS that has been exposed to non-transitory voltages above 24V should be removed from service.
+
+#### Power Consumption at 12V
+
+| State | Duration | Current Draw |
+|-------|----------|--------------|
+| Boot | 210ms | 30mA |
+| Idle | Continuous | 0.5mA |
+| Measure | 200ms | 20mA (default configuration) |
+
+## OTS Equipment
+
+An OTS system comprises of one or more OTS sensors. Prior to mobilising the sensors to site, it is recommended users perform the checks detailed below.
+
+### Initial Checks
+
+While Osprey Measurement Systems' instruments undergo rigorous testing prior to dispatch, it is best practice to test all devices on receipt and prior to mobilising to site to confirm no damage during shipment and to verify performance.
+
+#### Physical Check
+
+- Check for any signs of damage to the packaging that may lead to damage to the equipment inside
+- Check the cables for any nicks, abrasions, crushing or kinking
+- Check the sensors for any dents or abrasions
+- Check the rubber seals on the sensors
+
+#### Function Check
+
+- Link each string to your preferred data logger or the Serial USB Terminal app. Carry out a read cycle and confirm all sensors are reporting correctly
+- Adjust the position of the sensors. Repeat the read cycle and confirm that the value has changed
+
+### Flylead
+
+The cable flylead allows connection of the bus into a logger or RS485 interface.
+
+#### Wiring Color Codes
+
+| Function | OTS Cable 6.7mm |
+|----------|----------------|
+| Ground | Black |
+| RS485 A | Blue |
+| RS485 B | White |
+| 5-18VDC | Red |
+
+### Fixing Systems
+
+The OTS is a highly precise instrument. The manner in which it is secured to the measured structure is a significant vector for measurement contamination and should be considered carefully.
+
+#### Direct Fixing
+
+The OTS has two mounting holes, each designed for an **M4 Low Cap Screw (DIN 7984)** for fixing the OTS to the mounting fixtures detailed below.
+
+#### Magnetic Fixing
+
+Where the OTS is to be fitted to ferrous or other magnetically connectable substrates, high performance threaded magnets can be used.
+
+<Callout kind="alert" title="Important">
+  Where the magnetic susceptibility of the substrate or magnet may be compromised over the course of measurement (due to presence of high localised temperatures or electromagnetic currents), backup tether restraints should be used.
+</Callout>
+
+#### Mounting Bracket – Adhesive Fixing
+
+The Glue Plate – Mini is a stainless steel plate designed to offer optimal bonding using industrial adhesives for fixing the OTS to steel or concrete.
+
+<Callout kind="tip" title="Best Practice">
+  When adhesives are being used, ensure the OTS is screwed onto the Glue Plate before placing on the adhesive. The OTS screws will stop the adhesive plugging up the OTS screw holes.
+</Callout>
+
+#### Mounting Bracket – Mechanical Fixing
+
+The mounting bracket allows secure fixing of the OTS to any target material using a variety of methods:
+
+- Adhesives
+- Screws
+- Masonry anchors
+- Ground pegs
+- Welding
+- Clamps
+
+#### Rail Clip
+
+The OTS is designed to be mountable to the foot of standard **BS113 rail** via a hammer on clip fastening assembly. The fastening assembly consists of a spring clip, and a threaded wedge piece. This wedge piece provides direct mechanical coupling between rail and OTS node and also provides threaded holes that allow rapid removal and replacement of OTS's during track renewal works.
+
+<Callout kind="info" title="Other Rail Profiles">
+  Other rail profiles can be accommodated. Please contact Osprey for advice.
+</Callout>
+
+#### Strapping
+
+The OTS has two banding recesses for use with up to 6mm width steel or polymer restraining ties. These can be used to fix the OTS to rebar or access casing ahead of embedding in poured concrete or grouts.
+
+**Restraint tie examples include:**
+
+- Hellerman Tyton Z80L-HSW
+- Hellerman Tyton MBT14S.M3P

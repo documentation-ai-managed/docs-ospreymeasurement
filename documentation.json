@@ -1,9 +1,8 @@
 {
-  "name": "Ospreymeasurement",
-  "initialRoute": "introduction",
+  "name": "Osprey Demo",
   "colors": {
     "light": {
-      "brand": "#F26721",
+      "brand": "#db530f",
       "heading": "undefined",
       "text": "undefined"
     },
@@ -14,152 +13,312 @@
     }
   },
   "navigation": {
-    "languages": [
+    "tabs": [
       {
-        "language": "English",
-        "tabs": [
+        "tab": "Home",
+        "icon": "home",
+        "groups": [
           {
-            "tab": "Documentation",
-            "icon": "book",
-            "groups": [
-              {
-                "group": "Getting Started",
-                "icon": "rocket",
-                "pages": [
-                  {
-                    "group": "Sub Group",
-                    "pages": [
-                      {
-                        "title": "Quickstart",
-                        "path": "quickstart",
-                        "icon": "zap"
-                      },
-                      {
-                        "title": "Installation",
-                        "path": "installation",
-                        "icon": "file-text"
-                      },
-                      {
-                        "title": "Introduction",
-                        "path": "introduction",
-                        "icon": "home"
-                      }
-                    ],
-                    "icon": "activity"
-                  }
-                ]
-              },
-              {
-                "group": "Usage",
-                "icon": "compass",
-                "pages": [
-                  {
-                    "title": "Usage",
-                    "path": "usage",
-                    "icon": "file-text"
-                  },
-                  {
-                    "title": "Configuration",
-                    "path": "configuration",
-                    "icon": "settings"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "tab": "API Reference",
-            "icon": "code",
-            "groups": [
-              {
-                "group": "Endpoints",
-                "openapi": "openapi.yaml",
-                "pages": []
-              }
-            ]
-          },
-          {
-            "tab": "Help Center",
-            "icon": "help-circle",
+            "group": "Getting Started",
+            "icon": "rocket",
             "pages": [
               {
-                "title": "Help Center",
-                "path": "help-center",
-                "icon": "home"
-              },
-              {
-                "group": "FAQs",
-                "icon": "help-circle",
-                "expandable": false,
-                "pages": [
-                  {
-                    "title": "Getting API Access",
-                    "path": "help-center/faq/getting-api-access"
-                  }
-                ]
-              },
-              {
-                "group": "Troubleshooting",
-                "icon": "alert-circle",
-                "expandable": false,
-                "pages": [
-                  {
-                    "title": "Login Issues",
-                    "path": "help-center/troubleshooting/login-issues"
-                  }
-                ]
-              },
-              {
-                "group": "Guides",
-                "icon": "book-open",
-                "expandable": false,
-                "pages": [
-                  {
-                    "title": "New Project Guide",
-                    "path": "help-center/guides/new-project"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "tab": "Changelog",
-            "icon": "clock",
-            "pages": [
-              {
-                "title": "Release History",
-                "path": "changelog",
-                "icon": "history"
+                "title": "Overview",
+                "path": "overview",
+                "icon": "home",
+                "show-sidebar": false,
+                "show-toc": false,
+                "show-parent-label": false
               }
             ]
           }
         ]
       },
       {
-        "language": "Norsk",
-        "pages": []
+        "tab": "OTS",
+        "icon": "gauge",
+        "groups": [
+          {
+            "group": "Summary",
+            "icon": "file-text",
+            "pages": [
+              {
+                "title": "Overview",
+                "path": "ots/overview",
+                "icon": "home"
+              }
+            ]
+          },
+          {
+            "group": "User Guides",
+            "icon": "book-open",
+            "pages": [
+              {
+                "title": "Equipment Preparation",
+                "path": "ots/user-guide/equipment-preparation",
+                "icon": "wrench"
+              },
+              {
+                "title": "Installation Guide",
+                "path": "ots/user-guide/installation",
+                "icon": "download"
+              },
+              {
+                "title": "Data Interpretation",
+                "path": "ots/user-guide/data-interpretation",
+                "icon": "chart-line"
+              }
+            ]
+          },
+          {
+            "group": "Specs",
+            "icon": "clipboard-list",
+            "pages": []
+          },
+          {
+            "group": "Certificates",
+            "icon": "award",
+            "pages": []
+          }
+        ]
+      },
+      {
+        "tab": "ASP",
+        "icon": "droplets",
+        "groups": [
+          {
+            "group": "Summary",
+            "icon": "file-text",
+            "pages": [
+              {
+                "title": "Overview",
+                "path": "asp/overview",
+                "icon": "home"
+              }
+            ]
+          },
+          {
+            "group": "User Guides",
+            "icon": "book-open",
+            "pages": [
+              {
+                "title": "Planning",
+                "path": "asp/user-guide/planning",
+                "icon": "clipboard-list"
+              },
+              {
+                "title": "Inspection on Arrival",
+                "path": "asp/user-guide/inspection",
+                "icon": "search"
+              },
+              {
+                "title": "Installation Guide",
+                "path": "asp/user-guide/installation",
+                "icon": "download"
+              },
+              {
+                "title": "Data Collection & Management",
+                "path": "asp/user-guide/data-collection",
+                "icon": "database"
+              },
+              {
+                "title": "MODBUS Reference",
+                "path": "asp/user-guide/modbus-reference",
+                "icon": "code"
+              }
+            ]
+          },
+          {
+            "group": "Specs",
+            "icon": "clipboard-list",
+            "pages": []
+          },
+          {
+            "group": "Certificates",
+            "icon": "award",
+            "pages": []
+          }
+        ]
+      },
+      {
+        "tab": "IPX",
+        "icon": "magnet",
+        "groups": [
+          {
+            "group": "Summary",
+            "icon": "file-text",
+            "pages": [
+              {
+                "title": "Overview",
+                "path": "ipx/overview",
+                "icon": "home"
+              }
+            ]
+          },
+          {
+            "group": "User Guides",
+            "icon": "book-open",
+            "pages": [
+              {
+                "title": "Equipment Preparation",
+                "path": "ipx/user-guide/equipment-preparation",
+                "icon": "wrench"
+              },
+              {
+                "title": "Initial Checks & Configuration",
+                "path": "ipx/user-guide/initial-checks",
+                "icon": "check-circle"
+              },
+              {
+                "title": "Installation Planning",
+                "path": "ipx/user-guide/installation-planning",
+                "icon": "clipboard-list"
+              },
+              {
+                "title": "Installation Execution",
+                "path": "ipx/user-guide/installation-execution",
+                "icon": "download"
+              },
+              {
+                "title": "Data Management",
+                "path": "ipx/user-guide/data-management",
+                "icon": "database"
+              },
+              {
+                "title": "MODBUS Reference",
+                "path": "ipx/user-guide/modbus-reference",
+                "icon": "code"
+              }
+            ]
+          },
+          {
+            "group": "Specs",
+            "icon": "clipboard-list",
+            "pages": []
+          },
+          {
+            "group": "Certificates",
+            "icon": "award",
+            "pages": []
+          }
+        ]
+      },
+      {
+        "tab": "General Products",
+        "icon": "lucide-settings",
+        "groups": [
+          {
+            "group": "Summary",
+            "icon": "file-text",
+            "pages": [
+              {
+                "title": "Overview",
+                "path": "general/overview",
+                "icon": "home"
+              }
+            ]
+          },
+          {
+            "group": "User Guides",
+            "icon": "book-open",
+            "pages": []
+          },
+          {
+            "group": "Specs",
+            "icon": "clipboard-list",
+            "pages": []
+          },
+          {
+            "group": "Certificates",
+            "icon": "award",
+            "pages": []
+          }
+        ]
+      },
+      {
+        "tab": "Applications",
+        "icon": "layers",
+        "groups": [
+          {
+            "group": "Overview",
+            "icon": "layout-grid",
+            "pages": [
+              {
+                "title": "All Applications",
+                "path": "applications/overview",
+                "icon": "layers"
+              },
+              {
+                "title": "Bridges",
+                "path": "applications/bridges",
+                "icon": "hard-hat"
+              },
+              {
+                "title": "Dams",
+                "path": "applications/dams",
+                "icon": "dam"
+              },
+              {
+                "title": "Deep Excavation",
+                "path": "applications/deep-excavation",
+                "icon": "shovel"
+              },
+              {
+                "title": "Earthworks",
+                "path": "applications/earthworks",
+                "icon": "earth"
+              },
+              {
+                "title": "Foundations",
+                "path": "applications/foundations",
+                "icon": "landmark"
+              },
+              {
+                "title": "Industrial",
+                "path": "applications/industrial",
+                "icon": "factory"
+              },
+              {
+                "title": "Mines",
+                "path": "applications/mines",
+                "icon": "pickaxe"
+              },
+              {
+                "title": "Rail",
+                "path": "applications/rail",
+                "icon": "train-track"
+              },
+              {
+                "title": "Slope Stability",
+                "path": "applications/slope-stability",
+                "icon": "mountain"
+              },
+              {
+                "title": "Structures",
+                "path": "applications/structures",
+                "icon": "brick-wall"
+              }
+            ]
+          }
+        ]
       }
     ]
   },
-  "template": "classic",
-  "logo-dark": "https://blob-cdn.documentation.ai/org-dc1c90c8-d048-4904-871c-2f9ae3406368/doc-8b8d9aea-bcda-4447-aebc-cd0f569f7b63/1769809725570-28qhm6x6684-OSPREY-LOGO---Reverse-on-Black.png?q=85&fm=auto&auto=compress%2Cformat",
-  "logo-light": "https://blob-cdn.documentation.ai/org-dc1c90c8-d048-4904-871c-2f9ae3406368/doc-8b8d9aea-bcda-4447-aebc-cd0f569f7b63/1769809742884-fzgr3gwds4-OSPREY-LOGO---Positive.png?q=85&fm=auto&auto=compress%2Cformat",
-  "favicon": "https://blob-cdn.documentation.ai/org-dc1c90c8-d048-4904-871c-2f9ae3406368/doc-8b8d9aea-bcda-4447-aebc-cd0f569f7b63/1769809765009-684r317myxc-OSPREY-LOGO-Favicon_512.jpg?q=85&fm=auto&auto=compress%2Cformat",
+  "logo-light": "https://blob-cdn.documentation.ai/org-96dd4a7c-b231-40f8-887d-2810403df3cf/doc-c3c764ab-5ea3-40fb-9c7d-49abb0da242c/1771486628980-c9ulx6ga1af-osprey-logo-3.png?q=85&fm=auto&auto=compress%2Cformat",
+  "favicon": "https://blob-cdn.documentation.ai/org-96dd4a7c-b231-40f8-887d-2810403df3cf/doc-c3c764ab-5ea3-40fb-9c7d-49abb0da242c/1771486567175-hyo3oz6p3bc-osprey-favicon.png?q=85&fm=auto&auto=compress%2Cformat",
+  "logo-dark": "https://blob-cdn.documentation.ai/org-96dd4a7c-b231-40f8-887d-2810403df3cf/doc-c3c764ab-5ea3-40fb-9c7d-49abb0da242c/1771486713212-xsciqkq6mq8-osprey-logo-dark1.png?q=85&fm=auto&auto=compress%2Cformat",
   "navbar": {
     "actions": {
       "primary": {
-        "title": "Login",
-        "link": ""
-      }
+        "title": "Home",
+        "link": "https://ospreymeasurement.systems/"
+      },
+      "links": [
+        {
+          "title": "Support",
+          "link": "https://support.ospreymeasurement.com/"
+        }
+      ]
     }
-  },
-  "seo": {
-    "robots:index": false,
-    "robots:follow": false,
-    "sitemap:enabled": false,
-    "llms-txt:enabled": false
-  },
-  "ai": {
-    "ai-assistant:enabled": true
   }
 }

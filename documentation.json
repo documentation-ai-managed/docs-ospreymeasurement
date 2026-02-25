@@ -251,7 +251,8 @@
               {
                 "title": "Bridges",
                 "path": "applications/bridges",
-                "icon": "hard-hat"
+                "icon": "hard-hat",
+                "public": false
               },
               {
                 "title": "Dams",
@@ -298,7 +299,8 @@
                 "path": "applications/structures",
                 "icon": "brick-wall"
               }
-            ]
+            ],
+            "public": true
           }
         ]
       }

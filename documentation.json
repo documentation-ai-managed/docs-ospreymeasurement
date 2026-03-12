@@ -32,8 +32,7 @@
               }
             ]
           }
-        ],
-        "public": true
+        ]
       },
       {
         "tab": "OTS",
@@ -99,7 +98,7 @@
             ]
           },
           {
-            "group": "User Guides",
+            "group": "User Manual",
             "icon": "book-open",
             "pages": [
               {
@@ -130,13 +129,33 @@
             ]
           },
           {
-            "group": "Specs",
+            "group": "Specifications",
             "icon": "clipboard-list",
+            "pages": [
+              {
+                "title": "Certificate of Conformity",
+                "path": "certificate-of-conformity",
+                "icon": "lucide-stamp"
+              }
+            ]
+          },
+          {
+            "group": "Compliance",
+            "icon": "award",
             "pages": []
           },
           {
-            "group": "Certificates",
-            "icon": "award",
+            "group": "Tools",
+            "pages": [
+              {
+                "title": "ASP Length Calculator",
+                "path": "asp-length-calculator",
+                "icon": "lucide-calculator"
+              }
+            ]
+          },
+          {
+            "group": "Quick Guides",
             "pages": []
           }
         ]
@@ -252,8 +271,7 @@
               {
                 "title": "Bridges",
                 "path": "applications/bridges",
-                "icon": "hard-hat",
-                "public": false
+                "icon": "hard-hat"
               },
               {
                 "title": "Dams",
@@ -300,8 +318,7 @@
                 "path": "applications/structures",
                 "icon": "brick-wall"
               }
-            ],
-            "public": true
+            ]
           }
         ]
       }

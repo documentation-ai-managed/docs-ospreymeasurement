@@ -4,67 +4,7 @@ description: >-
   The ASP length calculator can be used to calculate the total length of your
   ASP
 ---
-
-import { useEffect, useRef, useState } from "react";
-
 Use the below widget to calculate the total length of your ASP system, weight, and packing dimensions.
 
-export const ElfsightAspLengthCalculator = () => {
-  // Load the iframe-resizer script once
-  const iframeRef = useRef(null);
-  const [scriptLoaded, setScriptLoaded] = useState(false);
+<Iframe uid="8533a8c4-12f9-441a-a072-f08f882ee7bc" src="https://ae81a831c9334333a484953e744d4876.elf.site" title="Embedded content" width="672" height="1080" allow-full-screen="true" frame-border="0" loading="lazy" style="width: 672px; height: auto; cursor: pointer;" />
 
-  useEffect(() => {
-    if (typeof window === "undefined") {
-      return;
-    }
-
-    // If the script is already loaded, do not load it again
-    if (window.iFrameResize) {
-      setScriptLoaded(true);
-      return;
-    }
-
-    const script = document.createElement("script");
-    script.src = "https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.2.10/iframeResizer.min.js";
-    script.async = true;
-
-    script.onload = () => {
-      setScriptLoaded(true);
-    };
-
-    document.head.appendChild(script);
-
-    return () => {
-      if (script.parentNode) {
-        script.parentNode.removeChild(script);
-      }
-    };
-  }, []);
-
-  useEffect(() => {
-    if (!scriptLoaded || !iframeRef.current || !window.iFrameResize) {
-      return;
-    }
-
-    // Initialize iframe-resizer on the embedded iframe
-    window.iFrameResize(
-      {
-        checkOrigin: false
-      },
-      iframeRef.current
-    );
-  }, [scriptLoaded]);
-
-  return (
-    <iframe
-      ref={iframeRef}
-      src="https://ae81a831c9334333a484953e744d4876.elf.site"
-      title="ASP length calculator"
-      style={{ border: "none", width: "100%" }}
-      loading="lazy"
-    />
-  );
-};
-
-<ElfsightAspLengthCalculator />

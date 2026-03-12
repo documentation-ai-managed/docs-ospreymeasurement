@@ -95,38 +95,47 @@
                 "path": "asp/overview",
                 "icon": "home"
               }
-            ]
+            ],
+            "public": true
           },
           {
-            "group": "User Manual",
+            "group": "User Guide",
             "icon": "book-open",
             "pages": [
               {
                 "title": "Planning",
                 "path": "asp/user-guide/planning",
-                "icon": "clipboard-list"
+                "icon": "clipboard-list",
+                "public": true
               },
               {
                 "title": "Inspection on Arrival",
                 "path": "asp/user-guide/inspection",
-                "icon": "search"
+                "icon": "search",
+                "public": true
               },
               {
-                "title": "Installation Guide",
-                "path": "asp/user-guide/installation",
+                "title": "Establishing a Reference",
+                "path": "asp/user-guide/reference",
                 "icon": "download"
+              },
+              {
+                "title": "Installing in a Trench",
+                "path": "installing-in-a-trench",
+                "icon": "lucide-shovel"
+              },
+              {
+                "title": "Installing in a Conduit",
+                "path": "installing-in-a-conduit",
+                "icon": "chevron-up-circle"
               },
               {
                 "title": "Data Collection & Management",
                 "path": "asp/user-guide/data-collection",
                 "icon": "database"
-              },
-              {
-                "title": "MODBUS Reference",
-                "path": "asp/user-guide/modbus-reference",
-                "icon": "code"
               }
-            ]
+            ],
+            "public": true
           },
           {
             "group": "Specifications",
@@ -157,6 +166,16 @@
           {
             "group": "Quick Guides",
             "pages": []
+          },
+          {
+            "group": "Developer Info",
+            "pages": [
+              {
+                "title": "MODBUS Reference",
+                "path": "asp/user-guide/modbus-reference",
+                "icon": "code"
+              }
+            ]
           }
         ]
       },

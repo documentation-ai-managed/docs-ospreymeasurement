@@ -47,7 +47,8 @@
                 "path": "ots/overview",
                 "icon": "home"
               }
-            ]
+            ],
+            "public": true
           },
           {
             "group": "User Guides",
@@ -140,6 +141,11 @@
           {
             "group": "Specifications",
             "icon": "clipboard-list",
+            "pages": []
+          },
+          {
+            "group": "Compliance",
+            "icon": "award",
             "pages": [
               {
                 "title": "Certificate of Conformity",
@@ -147,11 +153,6 @@
                 "icon": "lucide-stamp"
               }
             ]
-          },
-          {
-            "group": "Compliance",
-            "icon": "award",
-            "pages": []
           },
           {
             "group": "Tools",
@@ -192,15 +193,16 @@
                 "path": "ipx/overview",
                 "icon": "home"
               }
-            ]
+            ],
+            "public": true
           },
           {
             "group": "User Guides",
             "icon": "book-open",
             "pages": [
               {
-                "title": "Equipment Preparation",
-                "path": "ipx/user-guide/equipment-preparation",
+                "title": "Planning",
+                "path": "ipx/user-guide/planning",
                 "icon": "wrench"
               },
               {
@@ -222,13 +224,9 @@
                 "title": "Data Management",
                 "path": "ipx/user-guide/data-management",
                 "icon": "database"
-              },
-              {
-                "title": "MODBUS Reference",
-                "path": "ipx/user-guide/modbus-reference",
-                "icon": "code"
               }
-            ]
+            ],
+            "public": true
           },
           {
             "group": "Specs",
@@ -239,6 +237,16 @@
             "group": "Certificates",
             "icon": "award",
             "pages": []
+          },
+          {
+            "group": "Developer Info",
+            "pages": [
+              {
+                "title": "MODBUS Reference",
+                "path": "ipx/user-guide/modbus-reference",
+                "icon": "code"
+              }
+            ]
           }
         ]
       },

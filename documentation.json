@@ -69,7 +69,8 @@
                 "path": "ots/user-guide/data-interpretation",
                 "icon": "chart-line"
               }
-            ]
+            ],
+            "public": true
           },
           {
             "group": "Specs",

@@ -1,8 +1,9 @@
 ---
 title: Data Interpretation
-description: Understanding Roll, Pitch, Yaw outputs and orientation measurements from OTS sensors
+description: >-
+  Understanding Roll, Pitch, Yaw outputs and orientation measurements from OTS
+  sensors
 ---
-
 ## Overview
 
 For most applications, the Roll, Pitch, Yaw outputs should be sufficient.
@@ -23,7 +24,7 @@ Clockwise Rotation: Positive values
 Counterclockwise Rotation: Negative values
 ```
 
-<Callout kind="info" title="Note">
+<Callout kind="info" collapsed="false">
   Roll measurements are meaningless in vertical applications.
 </Callout>
 
@@ -51,7 +52,7 @@ Clockwise Rotation: Positive values
 Counterclockwise Rotation: Negative values
 ```
 
-<Callout kind="info" title="Note">
+<Callout kind="info" collapsed="false">
   Yaw measurements are meaningless in horizontal applications.
 </Callout>
 
@@ -60,9 +61,9 @@ Counterclockwise Rotation: Negative values
 As this is a gravitational sensor, only two of these parameters are valid at any one time:
 
 | Application Type | Valid Parameters | Meaningless Parameter |
-|-----------------|------------------|----------------------|
-| Horizontal | Roll, Pitch | Yaw |
-| Vertical | Pitch, Yaw | Roll |
+| ---------------- | ---------------- | --------------------- |
+| Horizontal       | Roll, Pitch      | Yaw                   |
+| Vertical         | Pitch, Yaw       | Roll                  |
 
 ### Understanding Gravitational Limitations
 
@@ -72,7 +73,7 @@ The OTS uses a triaxial accelerometer to measure orientation relative to gravity
 
 - **In vertical applications** (e.g., retaining walls, building facades): The sensor can measure tilt away from vertical in two directions (Pitch and Yaw), but cannot determine rotation around the vertical axis (Roll) because this axis is aligned with gravity.
 
-<Callout kind="tip" title="Application-Specific Interpretation">
+<Callout kind="tip" collapsed="false">
   Always consider your installation orientation when interpreting sensor data. Focus on the two valid parameters for your specific application type.
 </Callout>
 
@@ -80,5 +81,7 @@ The OTS uses a triaxial accelerometer to measure orientation relative to gravity
 
 For further support and documentation, please contact:
 
-- **Email**: support@ospreymeasurement.com
-- **Support Portal**: support.ospreymeasurement.systems
+- **Email**: [support@ospreymeasurement.com](mailto:support@ospreymeasurement.com)
+
+- **Phone:&#x20;**+44 (0) 20 3355 4447
+

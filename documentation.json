@@ -38,7 +38,7 @@
       },
       {
         "tab": "OTS",
-        "icon": "gauge",
+        "icon": "lucide-rotate-cw",
         "groups": [
           {
             "group": "Summary",
@@ -89,7 +89,7 @@
       },
       {
         "tab": "ASP",
-        "icon": "droplets",
+        "icon": "arrow-down-from-line",
         "groups": [
           {
             "group": "Summary",
@@ -187,7 +187,7 @@
       },
       {
         "tab": "IPX",
-        "icon": "magnet",
+        "icon": "arrow-down-wide-narrow-icon",
         "groups": [
           {
             "group": "Summary",
@@ -257,7 +257,7 @@
         "public": true
       },
       {
-        "tab": "General Products",
+        "tab": "General",
         "icon": "lucide-settings",
         "groups": [
           {
@@ -272,12 +272,12 @@
             ]
           },
           {
-            "group": "User Guides",
+            "group": "Accessories",
             "icon": "book-open",
             "pages": []
           },
           {
-            "group": "Specs",
+            "group": "General Troubleshooting",
             "icon": "clipboard-list",
             "pages": []
           },
@@ -290,7 +290,7 @@
       },
       {
         "tab": "Applications",
-        "icon": "layers",
+        "icon": "lucide-building2",
         "groups": [
           {
             "group": "Overview",

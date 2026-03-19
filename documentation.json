@@ -123,7 +123,7 @@
                   {
                     "title": "Establish your Datum",
                     "path": "datum",
-                    "icon": "clipboard-list",
+                    "icon": "activity",
                     "public": true
                   },
                   {
@@ -134,30 +134,48 @@
                 ]
               },
               {
-                "title": "Inspection on Arrival",
-                "path": "asp/user-guide/inspection",
-                "icon": "search",
-                "public": true
+                "group": "Installation",
+                "pages": [
+                  {
+                    "title": "Pre-Install Inspections",
+                    "path": "asp/user-guide/inspection",
+                    "icon": "search",
+                    "public": true
+                  },
+                  {
+                    "title": "Building your Reference Pad",
+                    "path": "reference-pad",
+                    "icon": "download"
+                  },
+                  {
+                    "title": "Installing in a Trench",
+                    "path": "installing-in-a-trench",
+                    "icon": "lucide-shovel"
+                  },
+                  {
+                    "title": "Installing in a Conduit",
+                    "path": "installing-in-a-conduit",
+                    "icon": "chevron-up-circle"
+                  }
+                ]
               },
               {
-                "title": "Establishing a Reference",
-                "path": "asp/user-guide/reference",
-                "icon": "download"
-              },
-              {
-                "title": "Installing in a Trench",
-                "path": "installing-in-a-trench",
-                "icon": "lucide-shovel"
-              },
-              {
-                "title": "Installing in a Conduit",
-                "path": "installing-in-a-conduit",
-                "icon": "chevron-up-circle"
-              },
-              {
-                "title": "Data Collection & Management",
-                "path": "asp/user-guide/data-collection",
-                "icon": "database"
+                "group": "Data Logging",
+                "pages": [
+                  {
+                    "title": "Worldsensing",
+                    "path": "worldsensing"
+                  },
+                  {
+                    "title": "Campbell Scientific",
+                    "path": "campbell-scientific"
+                  },
+                  {
+                    "title": "Wiring Guide",
+                    "path": "asp/user-guide/data-collection",
+                    "icon": "cable"
+                  }
+                ]
               }
             ],
             "public": true
@@ -187,10 +205,6 @@
                 "icon": "lucide-calculator"
               }
             ]
-          },
-          {
-            "group": "Quick Guides",
-            "pages": []
           },
           {
             "group": "Developer Info",

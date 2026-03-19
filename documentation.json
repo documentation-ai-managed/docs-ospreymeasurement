@@ -223,9 +223,11 @@
               {
                 "title": "MODBUS Reference",
                 "path": "asp/user-guide/modbus-reference",
-                "icon": "code"
+                "icon": "code",
+                "public": false
               }
-            ]
+            ],
+            "public": false
           }
         ],
         "public": true

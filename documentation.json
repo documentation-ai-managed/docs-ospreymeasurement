@@ -186,9 +186,15 @@
             "public": true
           },
           {
-            "group": "Specifications",
+            "group": "Reference Documentation",
             "icon": "clipboard-list",
-            "pages": []
+            "pages": [
+              {
+                "title": "Downloads",
+                "path": "downloads",
+                "icon": "cloud-download-icon"
+              }
+            ]
           },
           {
             "group": "Compliance",

@@ -1,0 +1,94 @@
+---
+title: Designing Your ASP Site
+description: >-
+  How to establish your settlement monitoring requirements and design an ASP
+  that suits your site.
+---
+Automated settlement monitoring brings huge benefits to a wide range of applications. Since every project is different, here’s a short guide on how to isolate the key requirements and design a monitoring system that suits yours best.
+
+<Callout kind="tip" collapsed="false">
+  **Overview**
+
+  Things to Consider:
+
+  - Layout of monitoring points
+
+  - Spatial frequency required to get the information you need
+</Callout>
+
+## Layout of Monitoring Points
+
+Each site will have different challenges to address. Here are some factors to consider.&#x20;
+
+<Columns cols="2">
+  <Card title="Alignment" icon="lucide-route" horizontal="false" target="_self">
+    The ASP offers a great deal of flexibility in how it is laid out on your site. Consider the key points of interest, with the following options in mind:
+
+    ---
+
+    ### Discrete Monitoring Points
+
+    <Image src="https://blob-cdn.documentation.ai/org-dc1c90c8-d048-4904-871c-2f9ae3406368/doc-8b8d9aea-bcda-4447-aebc-cd0f569f7b63/1773884078230-s869se50wf-ASP-Layout-Discrete-drawio.png?q=85&fm=auto&auto=compress%2Cformat" width="280" height="164" alt="" style="width: 280px; height: auto; cursor: pointer;" />
+
+    Settlement monitoring of specific locations that have a loose, or no, relationship to one another.
+
+    Custom built ASPs can be built to customer specification to accommodate the layout of your site.
+
+    ---
+
+    ### Profiles
+
+    <Image src="https://blob-cdn.documentation.ai/org-dc1c90c8-d048-4904-871c-2f9ae3406368/doc-8b8d9aea-bcda-4447-aebc-cd0f569f7b63/1773884153658-frcubsizydu-ASP-Layout-profile-drawio.png?q=85&fm=auto&auto=compress%2Cformat" width="281" height="178" alt="" style="width: 281px; height: auto; cursor: pointer;" />
+
+    Settlement monitoring points in a linear alignment intended to demonstrate settlement relative to its position along or across a structure.
+
+    ---
+
+    ### Density
+
+    <Image src="https://blob-cdn.documentation.ai/org-dc1c90c8-d048-4904-871c-2f9ae3406368/doc-8b8d9aea-bcda-4447-aebc-cd0f569f7b63/1773884209677-vcr1wpwigy-ASP-Layout-density-drawio.png?q=85&fm=auto&auto=compress%2Cformat" width="279" height="177" alt="" style="width: 279px; height: auto; cursor: pointer;" />
+
+    Where profiles are required, standard ASP systems are ideal, with regular intervals between sensors: 1m, 2.5m, 5m or 10m.
+  </Card>
+
+  <Card title="Distances" icon="space-icon" horizontal="false" target="_self">
+    The ASP reference sensor sits 200mm from the start of the ASP system.
+
+    The maximum distance from reference sensor to the final sensor in the system is 145m long.
+
+    Within those 145m we can include up to 100 ASP settlement sensors.
+
+    <Image src="https://blob-cdn.documentation.ai/org-dc1c90c8-d048-4904-871c-2f9ae3406368/doc-8b8d9aea-bcda-4447-aebc-cd0f569f7b63/1773884670793-1tuofdd0l4z-ASP-Max-Length.png?q=85&fm=auto&auto=compress%2Cformat" width="275" height="104" alt="" style="width: 275px; height: auto; cursor: pointer;" />
+
+    Space should be allowed at the end of the system to accommodate the pressure compensator. This equates to roughly 2% of the measured length, plus 0.5m
+
+    Use the [ASP Length Calculator](/asp-length-calculator) to calculate the total length of your ASP.
+
+    <Callout kind="tip" collapsed="false">
+      ASP’s can be overlapped and joined, to extend the distance covered by a single reference point
+    </Callout>
+
+    By joining two or more sensors in an ASP, control can be carried from one system to another, extending coverage without the need for additional external references. See <a href="/asp/user-guide/reference" target="_blank" rel="noopener noreferrer">Establishing a Reference</a> for more details.
+
+    <Image src="https://blob-cdn.documentation.ai/org-dc1c90c8-d048-4904-871c-2f9ae3406368/doc-8b8d9aea-bcda-4447-aebc-cd0f569f7b63/1773295525183-ieq4qqvu2gq-ASP---ASP-Reference-drawio.png?q=85&fm=auto&auto=compress%2Cformat" width="267" height="61" alt="" style="width: 267px; height: auto; cursor: pointer;" />
+
+    &#x20;This can be done with any sensor in an ASP system, so it can be used for extending linear arrays, or creating grid patterns for broader coverage. See “data reduction” for more information.
+
+    <Image src="https://blob-cdn.documentation.ai/org-dc1c90c8-d048-4904-871c-2f9ae3406368/doc-8b8d9aea-bcda-4447-aebc-cd0f569f7b63/1773884979738-w0f7c4f9pw-ASP-Layout-Grid-drawio.png?q=85&fm=auto&auto=compress%2Cformat" width="267" height="299" alt="" style="width: 267px; height: auto; cursor: pointer;" />
+  </Card>
+</Columns>
+
+## Data Logging 
+
+Like all Osprey-BUS products, the ASP has been developed in collaboration with the leading data logger manufacturers in the industry. There are some considerations to take into account when designing your monitoring scheme.
+
+There are some limitations based on the data logger you choose, their power output and package size. The section on data logging covers the implementation, but here is a quick guide on the most used data loggers:
+
+| Data Logger               | Max No. Sensors | Max Read Frequency  |
+| ------------------------- | --------------- | ------------------- |
+| Worldsensing G6           | 50              | 1 minute            |
+| Worldsensing G7           | 100             | 1 minute            |
+| Campbell Scientific Range | 100             | 1 second per sensor |
+| WiSen                     | 100             | 5 minutes           |
+| Ackcio                    | 50              | 5 minutes           |
+

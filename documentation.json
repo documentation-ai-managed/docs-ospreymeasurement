@@ -108,10 +108,30 @@
             "icon": "book-open",
             "pages": [
               {
-                "title": "Planning",
-                "path": "asp/user-guide/planning",
-                "icon": "clipboard-list",
-                "public": true
+                "group": "Planning",
+                "pages": [
+                  {
+                    "title": "Design the Layout",
+                    "path": "layout",
+                    "icon": "lucide-pencil-ruler"
+                  },
+                  {
+                    "title": "Consider Site Conditions",
+                    "path": "site-conditions",
+                    "icon": "alert-octagon-icon"
+                  },
+                  {
+                    "title": "Establish your Datum",
+                    "path": "datum",
+                    "icon": "clipboard-list",
+                    "public": true
+                  },
+                  {
+                    "title": "Ordering",
+                    "path": "ordering",
+                    "icon": "lucide-list-ordered"
+                  }
+                ]
               },
               {
                 "title": "Inspection on Arrival",

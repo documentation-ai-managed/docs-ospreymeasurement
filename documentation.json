@@ -134,7 +134,7 @@
                 ]
               },
               {
-                "group": "Installation",
+                "group": "Installing",
                 "pages": [
                   {
                     "title": "Pre-Install Inspections",
@@ -163,8 +163,8 @@
                 "group": "Data Logging",
                 "pages": [
                   {
-                    "title": "Wiring Guide",
-                    "path": "asp/user-guide/data-collection",
+                    "title": "Connect",
+                    "path": "asp/user-guide/connect",
                     "icon": "cable"
                   },
                   {

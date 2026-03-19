@@ -127,8 +127,8 @@
                     "public": true
                   },
                   {
-                    "title": "Ordering",
-                    "path": "ordering",
+                    "title": "Order",
+                    "path": "order",
                     "icon": "lucide-list-ordered"
                   }
                 ]
@@ -163,17 +163,22 @@
                 "group": "Data Logging",
                 "pages": [
                   {
+                    "title": "Wiring Guide",
+                    "path": "asp/user-guide/data-collection",
+                    "icon": "cable"
+                  },
+                  {
+                    "title": "Data Management",
+                    "path": "data-management",
+                    "icon": "database"
+                  },
+                  {
                     "title": "Worldsensing",
                     "path": "worldsensing"
                   },
                   {
                     "title": "Campbell Scientific",
                     "path": "campbell-scientific"
-                  },
-                  {
-                    "title": "Wiring Guide",
-                    "path": "asp/user-guide/data-collection",
-                    "icon": "cable"
                   }
                 ]
               }

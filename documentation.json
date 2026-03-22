@@ -173,10 +173,6 @@
                     "icon": "database"
                   },
                   {
-                    "title": "Worldsensing",
-                    "path": "worldsensing"
-                  },
-                  {
                     "title": "Campbell Scientific",
                     "path": "campbell-scientific"
                   }
@@ -201,6 +197,27 @@
             ]
           },
           {
+            "group": "Reference Documentation",
+            "pages": [
+              {
+                "title": "Compliance Certificates",
+                "path": "compliance-docs",
+                "icon": "lucide-badge-check"
+              },
+              {
+                "title": "Template SOPs",
+                "path": "template-sops",
+                "icon": "book-open-check-icon"
+              },
+              {
+                "title": "Template ITPs",
+                "path": "template-itps",
+                "icon": "clipboard-check-icon"
+              }
+            ],
+            "icon": "book-open-text"
+          },
+          {
             "group": "Developer Info",
             "pages": [
               {
@@ -211,17 +228,6 @@
               }
             ],
             "public": false
-          },
-          {
-            "group": "Reference Documentation",
-            "pages": [
-              {
-                "title": "Compliance Certificates",
-                "path": "compliance-docs",
-                "icon": "lucide-badge-check"
-              }
-            ],
-            "icon": "book-open-text"
           }
         ],
         "public": true

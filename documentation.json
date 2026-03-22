@@ -137,7 +137,7 @@
                 "group": "Installing",
                 "pages": [
                   {
-                    "title": "Pre-Install Inspections",
+                    "title": "Pre-Installation Inspections",
                     "path": "asp/user-guide/inspection",
                     "icon": "search",
                     "public": true
@@ -160,7 +160,7 @@
                 ]
               },
               {
-                "group": "Data Logging",
+                "group": "Recording",
                 "pages": [
                   {
                     "title": "Connect",
@@ -186,34 +186,17 @@
             "public": true
           },
           {
-            "group": "Reference Documentation",
-            "icon": "clipboard-list",
-            "pages": [
-              {
-                "title": "Downloads",
-                "path": "downloads",
-                "icon": "cloud-download-icon"
-              }
-            ]
-          },
-          {
-            "group": "Compliance",
-            "icon": "award",
-            "pages": [
-              {
-                "title": "Certificate of Conformity",
-                "path": "certificate-of-conformity",
-                "icon": "lucide-stamp"
-              }
-            ]
-          },
-          {
             "group": "Tools",
             "pages": [
               {
                 "title": "ASP Length Calculator",
-                "path": "asp-length-calculator",
+                "path": "asp/user-guide/asp-length-calculator",
                 "icon": "lucide-calculator"
+              },
+              {
+                "title": "Data Visualisation",
+                "path": "data-visualisation",
+                "icon": "chart-line-icon"
               }
             ]
           },
@@ -228,6 +211,17 @@
               }
             ],
             "public": false
+          },
+          {
+            "group": "Reference Documentation",
+            "pages": [
+              {
+                "title": "Compliance Certificates",
+                "path": "compliance-docs",
+                "icon": "lucide-badge-check"
+              }
+            ],
+            "icon": "book-open-text"
           }
         ],
         "public": true

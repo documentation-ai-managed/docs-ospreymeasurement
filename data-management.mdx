@@ -2,6 +2,10 @@
 title: Data Reduction
 description: Convert ASP sensor outputs to relative or absolute settlement
 ---
+## Outputs
+
+## Distance
+
 The ASP nodes carry out onboard conversion of pressure to mm head. Change in elevation is relative to the reference sensor(s). To calculate the current elevation of a measurement node, the following calculations are used:
 
 ### Change in Relative Elevation
@@ -10,9 +14,7 @@ The ASP nodes carry out onboard conversion of pressure to mm head. Change in ele
 
 If the elevation of the reference sensor is assumed to be fixed:
 
-```typescript
-Δeₙ = Δₙ - Δᵣ
-```
+`Δeₙ = Δₙ - Δᵣ`
 
 **Where:**
 
@@ -26,9 +28,7 @@ If the elevation of the reference sensor is assumed to be fixed:
 
 If the elevation of the reference is derived:
 
-```typescript
-Δeₙ = Δₙ - Δᵣ + Δd
-```
+`Δeₙ = Δₙ - Δᵣ + Δd`
 
 **Where:**
 
@@ -44,9 +44,7 @@ If the elevation of the reference is derived:
 
 To calculate the absolute elevation of a measurement node:
 
-```typescript
 Eₙ₁ = Δeₙ + Eₙ₀
-```
 
 **Where:**
 
@@ -60,11 +58,35 @@ Eₙ₁ = Δeₙ + Eₙ₀
   Always record initial elevations (Eₙ₀) during installation and the baseline reading period to enable accurate absolute elevation calculations.
 </Callout>
 
+## Voltage
+
+**Voltage received by each sensor during measurement.&#x20;**
+
+This provides useful troubleshooting metric, and often a better indicator of reducing battery power than the power recorded by the data logger itself.&#x20;
+
+## Temperature
+
+**Temperature at each sensor in degrees Celsius.&#x20;**
+
+While temperature compensation is carried out during the *Distance&#x20;*&#x6D;easurement, the temperature reading confirms stable temperature across the system and identifies any physical issues that may be impacting the measurement performance.
+
+## Status
+
+**Numerical code indicating measurement status.**
+
+| Status | Osprey Error Code | Description                      |
+| ------ | ----------------- | -------------------------------- |
+| 0      | N/A               | Measurement OK                   |
+| 1      | -99               | Measurement Not Ready            |
+| 2      | -98               | Pressure value outside threshold |
+| 3      | -97               | Sensor reports an internal error |
+| 4      | -96               | Insufficient power               |
+
 ## Support
 
 For further assistance with data collection and interpretation, please contact:
 
 - **Email**: [<a href="mailto:support@ospreymeasurement.com" target="_blank" rel="noopener noreferrer">support@ospreymeasurement.com</a>](mailto:support@ospreymeasurement.com)
 
-- **Support Portal**: support.ospreymeasurement.systems
+- **Support Portal**: support.ospreymeasurement.com
 

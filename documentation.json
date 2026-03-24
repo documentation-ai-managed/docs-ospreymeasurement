@@ -53,9 +53,13 @@
             "public": true
           },
           {
-            "group": "User Guides",
+            "group": "User Guide",
             "icon": "book-open",
             "pages": [
+              {
+                "group": "Planning",
+                "pages": []
+              },
               {
                 "title": "Equipment Preparation",
                 "path": "ots/user-guide/equipment-preparation",
@@ -253,9 +257,14 @@
             "icon": "book-open",
             "pages": [
               {
-                "title": "Planning",
-                "path": "ipx/user-guide/planning",
-                "icon": "wrench"
+                "group": "Planning",
+                "pages": [
+                  {
+                    "title": "Planning",
+                    "path": "ipx/user-guide/planning",
+                    "icon": "wrench"
+                  }
+                ]
               },
               {
                 "title": "Initial Checks & Configuration",

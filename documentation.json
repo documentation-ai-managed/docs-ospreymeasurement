@@ -232,6 +232,21 @@
               }
             ],
             "public": false
+          },
+          {
+            "group": "Articles",
+            "pages": [
+              {
+                "title": "Conduit vs Direct Burial",
+                "path": "conduit-vs-direct-burial",
+                "icon": "construction"
+              },
+              {
+                "title": "The Impact of Temperature Variation",
+                "path": "the-impact-of-temperature-variation",
+                "icon": "lucide-thermometer-sun"
+              }
+            ]
           }
         ],
         "public": true
@@ -259,6 +274,11 @@
               {
                 "group": "Planning",
                 "pages": [
+                  {
+                    "title": "Define Your Requirements",
+                    "path": "define-your-requirements",
+                    "icon": "list-checks"
+                  },
                   {
                     "title": "Planning",
                     "path": "ipx/user-guide/planning",

@@ -58,34 +58,47 @@
             "pages": [
               {
                 "group": "Planning",
-                "pages": []
+                "pages": [
+                  {
+                    "title": "Equipment Preparation",
+                    "path": "ots/user-guide/equipment-preparation",
+                    "icon": "wrench"
+                  }
+                ]
               },
               {
-                "title": "Equipment Preparation",
-                "path": "ots/user-guide/equipment-preparation",
-                "icon": "wrench"
+                "group": "Installing",
+                "pages": [
+                  {
+                    "title": "Installation Guide",
+                    "path": "ots/user-guide/installation",
+                    "icon": "download"
+                  }
+                ]
               },
               {
-                "title": "Installation Guide",
-                "path": "ots/user-guide/installation",
-                "icon": "download"
-              },
-              {
-                "title": "Data Interpretation",
-                "path": "ots/user-guide/data-interpretation",
-                "icon": "chart-line"
+                "group": "Recording",
+                "pages": [
+                  {
+                    "title": "Data Interpretation",
+                    "path": "ots/user-guide/data-interpretation",
+                    "icon": "chart-line"
+                  }
+                ]
               }
             ],
             "public": true
           },
           {
-            "group": "Specs",
-            "icon": "clipboard-list",
+            "group": "Tools",
             "pages": []
           },
           {
-            "group": "Certificates",
-            "icon": "award",
+            "group": "Reference Documentation",
+            "pages": []
+          },
+          {
+            "group": "Articles",
             "pages": []
           }
         ],
@@ -268,7 +281,7 @@
             "public": true
           },
           {
-            "group": "User Guides",
+            "group": "User Guide",
             "icon": "book-open",
             "pages": [
               {
@@ -280,6 +293,11 @@
                     "icon": "list-checks"
                   },
                   {
+                    "title": "Installation Planning",
+                    "path": "ipx/user-guide/installation-planning",
+                    "icon": "clipboard-list"
+                  },
+                  {
                     "title": "Planning",
                     "path": "ipx/user-guide/planning",
                     "icon": "wrench"
@@ -287,37 +305,42 @@
                 ]
               },
               {
-                "title": "Initial Checks & Configuration",
-                "path": "ipx/user-guide/initial-checks",
-                "icon": "check-circle"
+                "group": "Installing",
+                "pages": [
+                  {
+                    "title": "Initial Checks & Configuration",
+                    "path": "ipx/user-guide/initial-checks",
+                    "icon": "check-circle"
+                  },
+                  {
+                    "title": "Installation Execution",
+                    "path": "ipx/user-guide/installation-execution",
+                    "icon": "download"
+                  }
+                ]
               },
               {
-                "title": "Installation Planning",
-                "path": "ipx/user-guide/installation-planning",
-                "icon": "clipboard-list"
-              },
-              {
-                "title": "Installation Execution",
-                "path": "ipx/user-guide/installation-execution",
-                "icon": "download"
-              },
-              {
-                "title": "Data Management",
-                "path": "ipx/user-guide/data-management",
-                "icon": "database"
+                "group": "Recording",
+                "pages": [
+                  {
+                    "title": "Data Management",
+                    "path": "ipx/user-guide/data-management",
+                    "icon": "database"
+                  }
+                ]
               }
             ],
             "public": true
           },
           {
-            "group": "Specs",
-            "icon": "clipboard-list",
-            "pages": []
-          },
-          {
-            "group": "Certificates",
-            "icon": "award",
-            "pages": []
+            "group": "Reference Documentation",
+            "pages": [
+              {
+                "title": "Compliance Certificates",
+                "path": "compliance-certificates",
+                "icon": "lucide-badge-check"
+              }
+            ]
           },
           {
             "group": "Developer Info",
@@ -350,17 +373,48 @@
           {
             "group": "Accessories",
             "icon": "book-open",
-            "pages": []
+            "pages": [
+              {
+                "title": "De-Coiler",
+                "path": "de-coiler",
+                "icon": "arrow-down-right-from-circle-icon"
+              },
+              {
+                "title": "USB to RS485 Interface",
+                "path": "usb-to-rs485-interface",
+                "icon": "lucide-usb"
+              }
+            ]
           },
           {
             "group": "General Troubleshooting",
             "icon": "clipboard-list",
-            "pages": []
+            "pages": [
+              {
+                "title": "Early Warning Indicators",
+                "path": "early-warning-indicators",
+                "icon": "alarm-check-icon"
+              },
+              {
+                "title": "Using a Multimeter",
+                "path": "using-a-multimeter",
+                "icon": "lucide-parking-meter"
+              }
+            ]
           },
           {
             "group": "Certificates",
             "icon": "award",
             "pages": []
+          },
+          {
+            "group": "Developer Info",
+            "pages": [
+              {
+                "title": "Modbus Reference",
+                "path": "modbus"
+              }
+            ]
           }
         ]
       },

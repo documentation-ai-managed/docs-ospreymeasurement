@@ -217,9 +217,9 @@
             "group": "Reference Documentation",
             "pages": [
               {
-                "title": "Compliance Certificates",
-                "path": "compliance-docs",
-                "icon": "lucide-badge-check"
+                "title": "User Manual",
+                "path": "user-manual",
+                "icon": "book-open-icon"
               },
               {
                 "title": "Template SOPs",
@@ -230,6 +230,11 @@
                 "title": "Template ITPs",
                 "path": "template-itps",
                 "icon": "clipboard-check-icon"
+              },
+              {
+                "title": "Compliance Certificates",
+                "path": "compliance-docs",
+                "icon": "lucide-badge-check"
               }
             ],
             "icon": "book-open-text"
@@ -293,11 +298,6 @@
                     "icon": "list-checks"
                   },
                   {
-                    "title": "Planning",
-                    "path": "ipx/user-guide/planning",
-                    "icon": "wrench"
-                  },
-                  {
                     "title": "Components",
                     "path": "components",
                     "icon": "component"
@@ -308,14 +308,19 @@
                 "group": "Installing",
                 "pages": [
                   {
-                    "title": "Installation Planning",
-                    "path": "ipx/user-guide/installation-planning",
-                    "icon": "clipboard-list"
-                  },
-                  {
                     "title": "Initial Checks & Configuration",
                     "path": "ipx/user-guide/initial-checks",
                     "icon": "check-circle"
+                  },
+                  {
+                    "title": "Installing the Magnetic Extensometer",
+                    "path": "installing-the-magnetic-extensometer",
+                    "icon": "arrow-down-up"
+                  },
+                  {
+                    "title": "Installation Planning",
+                    "path": "ipx/user-guide/installation-planning",
+                    "icon": "clipboard-list"
                   },
                   {
                     "title": "Installation Execution",

@@ -293,20 +293,25 @@
                     "icon": "list-checks"
                   },
                   {
-                    "title": "Installation Planning",
-                    "path": "ipx/user-guide/installation-planning",
-                    "icon": "clipboard-list"
-                  },
-                  {
                     "title": "Planning",
                     "path": "ipx/user-guide/planning",
                     "icon": "wrench"
+                  },
+                  {
+                    "title": "Components",
+                    "path": "components",
+                    "icon": "component"
                   }
                 ]
               },
               {
                 "group": "Installing",
                 "pages": [
+                  {
+                    "title": "Installation Planning",
+                    "path": "ipx/user-guide/installation-planning",
+                    "icon": "clipboard-list"
+                  },
                   {
                     "title": "Initial Checks & Configuration",
                     "path": "ipx/user-guide/initial-checks",

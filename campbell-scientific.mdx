@@ -14,6 +14,226 @@ The following Campbell Scientific data loggers have native RS485 ports:
 
 For models without an integrated RS485 port an RS485 interface is required. Talk with your local Campbell Scientific dealer to discuss options. 
 
-## Programs
+## CR350
 
-Contact Osprey Support for sample programs for your Osprey products.
+The CR350 can control up to two ASP array's natively, or up to 16 with an AM16/32 multiplexor. It measures each ASP sequentially, so is not suitable for applications where strict timing or syncronised sampling is required. For applications where measurements can be within a few seconds / minutes of nominal sample time, it is a cost effective approach.
+
+### Logger Wiring
+
+The CR350 will need power via it's Bat port, and can be directly communicated with via the USB C interface for software updates and data downloads.
+
+| **CR350** | **Connection** | **Function**                        |
+| --------- | -------------- | ----------------------------------- |
+| Bat +     | 12V DC         | 12V DC Power In                     |
+| Bat -     | DC Gnd         | DC Ground                           |
+| USB C     | PC via USB C   | PC Connection to Logger Net / PC400 |
+
+### CR350 to AM16/32 - Multiplexer Control & Power
+
+The following handles the power to the multiplexer and the control lines that tell it when to switch channels.
+
+| **CR350 Terminal** | **AM16/32 Terminal** | **Function**                     |
+| ------------------ | -------------------- | -------------------------------- |
+| 12V                | 12V                  | Main Power for the Mux           |
+| C1                 | RES                  | Reset (Turns Mux On/Off)         |
+| C2                 | CLK                  | Clock (Advances to next channel) |
+| G                  | GND (Control side)   | Control Ground                   |
+
+### CR350 to AM16/32 - ASP Common Power and Data Lines&#x20;
+
+The ASP's communicates via ModbusRTU over half duplex RS-485, requiring two data wires (A and B).&#x20;
+
+Each ASP is powered by a 12V DC Supply from the CR350.
+
+| **CR350 Terminal** | **AM16/32 Common Terminal** | **Function** |
+| ------------------ | --------------------------- | ------------ |
+| COM2 Rx            | COM ODD H                   | RS485 - A    |
+| COM2 Tx            | COM ODD L                   | RS485 - B    |
+| COM1 12v           | COM EVEN H                  | ASP 12V      |
+| COM1 G             | COM EVEN L                  | ASP Ground   |
+
+### AM16/32 to Osprey ASPs - Sensor Array Wiring
+
+Each ASP needs to be connected to one of the 4 wires ports of the AM16/32.
+
+<Callout kind="alert" collapsed="false">
+  *Make sure your AM16/32 mode switch is physically flipped to&#x20;****4x16****.*
+</Callout>
+
+| **AM16/32** | **ASP Wire** | **Function** |
+| ----------- | ------------ | ------------ |
+| ODD H       | Blue         | RS485 - A    |
+| ODD L       | White        | RS485 - B    |
+| EVEN H      | Red          | ASP 12V      |
+| EVEN L      | Black        | ASP Ground   |
+
+Further ASP's can be added on each of the 4 wire ports. &#x20;
+
+### Software
+
+The following software example will read ASPs connected to each 4 wire port of the AM16/32 in turn.&#x20;
+
+It requires the following parameters to be set by the user:
+
+- Define mux channels to be used. Total number of connected ASPs.
+
+- The maximum number of sensors on any array, including reference sensor.&#x20;
+
+- The name and number of sensors on each channel.&#x20;
+
+
+
+```plaintext wrap="true"
+' -------------------------------------------------------------------------
+' CR350 Reference Code for Osprey ASP Sensor Array
+' Multiplexer: AM16/32 (4x16 Mode) - Multi-Channel Support
+' -------------------------------------------------------------------------
+
+' Define Logger Terminals
+Const MuxRES = C1       
+Const MuxCLK = C2       
+Const ModbusPort = Com2 ' Matches the physical COM2 Rx/Tx terminals
+
+' =========================================================================
+' USER CONFIGURATION
+' =========================================================================
+' 1. Define Multiplexer Channels (Max 16 in 4x16 mode)
+Const NUM_CHANNELS = 4 
+
+' 2. Define the max number of sensors on ANY single channel
+' (Required to allocate logger memory. Set high enough for your largest array)
+Const MAX_SENSORS = 11
+
+' Configuration arrays (Editable live via LoggerNet/PC400)
+Public SensorCount(NUM_CHANNELS) As Long
+Public ArrayName(NUM_CHANNELS) As String * 20
+
+' Declare State Variables
+Public PTemp As Float
+Public batt_volt As Float
+Public ch As Long        ' Mux Channel Index
+Public i As Long         ' Sensor Index
+Public MBResult As Long   
+
+' Modbus Data Variables (2D Arrays: Channel, Sensor Index)
+Public Distance(NUM_CHANNELS, MAX_SENSORS) As Float
+Public Voltage(NUM_CHANNELS, MAX_SENSORS) As Float
+Public Temperature(NUM_CHANNELS, MAX_SENSORS) As Float
+
+' Define the Data Table
+DataTable(OspreyData, True, -1)
+  DataInterval(0, 5, Min, 10) ' Set to 5 minutes for testing
+  
+  ' Sample the names for reference
+  Sample(NUM_CHANNELS, ArrayName(), String)
+  
+  ' Flattened 2D Arrays (Stores all channels & all max possible sensors)
+  Sample(NUM_CHANNELS * MAX_SENSORS, Distance(), FP2)
+  Sample(NUM_CHANNELS * MAX_SENSORS, Voltage(), FP2)
+  Sample(NUM_CHANNELS * MAX_SENSORS, Temperature(), FP2)
+
+EndTable
+
+' -------------------------------------------------------------------------
+' MEASUREMENT SUBROUTINE
+' -------------------------------------------------------------------------
+Sub ReadOspreyArray
+  Dim WarmupDelay_mSec As Long
+  
+  ' 1. MULTIPLEXER CONTROL & POWER UP
+  PortSet(MuxRES, 1) 
+  Delay(0, 10, mSec)
+  
+  ' Loop through each defined multiplexer channel
+  For ch = 1 To NUM_CHANNELS 
+    
+    ' Clock the multiplexer to advance to the next channel
+    PortSet(MuxCLK, 1) 
+    Delay(0, 10, mSec)
+    PortSet(MuxCLK, 0) 
+    
+    ' Only execute if sensors are configured for this specific channel
+    If SensorCount(ch) > 0 Then
+      
+      ' 2. SENSOR WARM-UP DELAY (Calculated dynamically per channel)
+      WarmupDelay_mSec = 3500 + (350 * SensorCount(ch)) 
+      Delay(0, WarmupDelay_mSec, mSec) 
+
+      ' 3. MODBUS POLLING LOOP (Closest to Farthest)
+      For i = 1 To SensorCount(ch) 
+        ' --- RESET VARIABLES TO NAN ---
+        Distance(ch, i) = NAN
+        Voltage(ch, i) = NAN
+        Temperature(ch, i) = NAN
+        
+          
+        ' Using Logical addresses (Physical + 1)
+        ModbusMaster(MBResult, ModbusPort, 9600, i, 3, Distance(ch, i), 257, 1, 1, 200, 2)
+        Delay(0, 80, mSec)
+        
+        ModbusMaster(MBResult, ModbusPort, 9600, i, 3, Voltage(ch, i), 259, 2, 1, 200, 2)
+        Delay(0, 40, mSec)
+        
+        ModbusMaster(MBResult, ModbusPort, 9600, i, 3, Temperature(ch, i), 261, 2, 1, 200, 2)
+        Delay(0, 80, mSec)
+        
+        
+        ' 4. NODE TRANSITION DELAY
+        Delay(0, 120, mSec)
+      Next i
+      
+    EndIf
+  Next ch
+  
+  ' 5. SHUTDOWN ARRAY & POWER CYCLE
+  PortSet(MuxRES, 0) 
+EndSub
+
+' -------------------------------------------------------------------------
+' MAIN PROGRAM
+' -------------------------------------------------------------------------
+BeginProg
+  ' Open COM port for Modbus
+  SerialOpen(ModbusPort, 9600, 0, 0, 100, 4)
+
+  ' =======================================================================
+  ' INITIALIZE CHANNEL CONFIGURATIONS
+  ' Define your array names and sensor counts here.
+  ' Note: Unused channels can be set to 0. 
+  ' =======================================================================
+  ArrayName(1) = "South Culvert"
+  SensorCount(1) = 9
+
+  ArrayName(2) = "East Slope"
+  SensorCount(2) = 11
+
+  ArrayName(3) = "West Slope"
+  SensorCount(3) = 11
+
+  ArrayName(4) = "Northern Basin"
+  SensorCount(4) = 7 
+
+
+  ' =======================================================================
+  ' RUN ON STARTUP / POWER CYCLE
+  ' =======================================================================
+  ' Populates the Public variables immediately on boot for live monitoring
+  Call ReadOspreyArray
+
+  ' =======================================================================
+  ' RUN ON SCHEDULED INTERVAL
+  ' =======================================================================
+  Scan(5, Min, 0, 0)
+    ' Read internal logger health
+    PanelTemp(PTemp, 60)
+    Battery(batt_volt)
+
+    ' Call the measurement sequence
+    Call ReadOspreyArray
+    
+    ' Save the data to memory
+    CallTable(OspreyData)
+  NextScan
+EndProg
+```
+

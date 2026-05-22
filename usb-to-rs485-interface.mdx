@@ -1,5 +1,94 @@
 ---
 title: USB to RS485 Interface
-description: Configure and troubleshoot Osprey BUS products from your mobile phone
+description: >-
+  Use an Android device and a USB to RS485 adapter to connect to OspreyBus
+  sensors, configure serial settings, and send ASCII commands.
 ---
+## Use the ASCII protocol over USB
+
+OspreyBus devices support an ASCII protocol that gives you a readable way to adjust common settings, take readings, and troubleshoot from a laptop or an Android mobile device.
+
+<Callout kind="alert" collapsed="false">
+  Osprey products are preconfigured before shipping. Only experienced technicians should modify settings, and only in collaboration with Osprey Measurement Systems technical support.
+</Callout>
+
+## Before you start
+
+<Columns cols="2">
+  <Card title="Tools" href="#" icon="settings" horizontal="false" target="_self">
+    - Android tablet or smartphone
+
+    - Part `OSP-USB` USB to RS485 interface
+
+    - USB-A to USB-C adaptor
+
+    - Terminal screwdriver
+  </Card>
+
+  <Card title="Software download" href="https://play.google.com/store/apps/details?id=de.kai_morich.serial_usb_terminal&hl=en_AU" icon="download" horizontal="false" target="_self">
+    Install **Serial USB Terminal for Android** from the Play Store before connecting to the sensor string.
+
+    <Image src="https://blob-cdn.documentation.ai/org-dc1c90c8-d048-4904-871c-2f9ae3406368/doc-8b8d9aea-bcda-4447-aebc-cd0f569f7b63/1778476877651-542x2oira5i-Google_Play_Store_badge_EN-svg.png?fm=auto&auto=compress%2Cformat" width="237" height="70" alt="" style="width: 237px; height: auto; cursor: pointer;" />
+  </Card>
+</Columns>
+
+<Image src="https://blob-cdn.documentation.ai/org-dc1c90c8-d048-4904-871c-2f9ae3406368/doc-8b8d9aea-bcda-4447-aebc-cd0f569f7b63/1778476701904-don9igln37a-58b1b0fe-1534-4525-a323-f5cfbcf7d454.png?fm=auto&auto=compress%2Cformat" width="1080" height="548" alt="" />
+
+## Connecting the sensors
+
+Wire the sensor string to the USB to RS485 adaptor before opening the terminal app.
+
+| Wire Colour | USB to RS485 terminal |
+| ----------- | --------------------- |
+| Black       | GND                   |
+| White       | B-                    |
+| Blue        | A+                    |
+| Red         | 5V                    |
+
+<Image src="https://blob-cdn.documentation.ai/org-dc1c90c8-d048-4904-871c-2f9ae3406368/doc-8b8d9aea-bcda-4447-aebc-cd0f569f7b63/1778477212963-gjvizumlsdv-ea047637-f8f2-4ede-9292-51b612572dd6.png?fm=auto&auto=compress%2Cformat" width="813" height="424" alt="" />
+
+<Callout kind="info" collapsed="false">
+  USB power is limited to 5V and may not be able to power strings longer than 10 sensors. If your sensor string is longer, use an external power supply.
+</Callout>
+
+## Setting up Serial USB Terminal
+
+When you plug the RS485 adaptor into your Android device, Serial USB Terminal should open automatically. If it does not, open the app manually and continue with the settings below.
+
+<Steps>
+  <Step title="Open the serial settings" title-type="p">
+    From the main screen, open the hamburger menu, select **Settings**, then open the serial settings.
+  </Step>
+
+  <Step title="Apply the required connection values" title-type="p">
+    Use these serial settings exactly.
+
+    | Setting        | Value |
+    | -------------- | ----- |
+    | Baud Rate      | 9600  |
+    | Data Bits      | 8     |
+    | Parity         | None  |
+    | Stop Bits      | 1     |
+    | Flow Control   | None  |
+    | BREAK duration | 100ms |
+  </Step>
+</Steps>
+
+## Sending commands
+
+Once the serial settings are saved, return to the main terminal screen and connect to the sensor string.
+
+<Steps>
+  <Step title="Return to the terminal" title-type="p">
+    Go back to the main terminal screen in Serial USB Terminal.
+  </Step>
+
+  <Step title="Connect to the adapter" title-type="p">
+    Select the connect button in the top-right corner. The icon appears as two unjoined connectors.
+  </Step>
+
+  <Step title="Send ASCII commands" title-type="p">
+    Enter and send commands to the string of sensors.
+  </Step>
+</Steps>
 

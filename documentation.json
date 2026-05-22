@@ -293,11 +293,6 @@
                 "group": "Planning",
                 "pages": [
                   {
-                    "title": "Define Your Requirements",
-                    "path": "define-your-requirements",
-                    "icon": "list-checks"
-                  },
-                  {
                     "title": "Components",
                     "path": "components",
                     "icon": "component"

@@ -353,7 +353,8 @@
               {
                 "title": "MODBUS Reference",
                 "path": "ipx/user-guide/modbus-reference",
-                "icon": "code"
+                "icon": "code",
+                "public": false
               }
             ]
           }

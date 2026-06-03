@@ -300,13 +300,8 @@
                 ]
               },
               {
-                "group": "Installing",
+                "group": "Installing Magnetic Extensometers",
                 "pages": [
-                  {
-                    "title": "Initial Checks & Configuration",
-                    "path": "ipx/user-guide/initial-checks",
-                    "icon": "check-circle"
-                  },
                   {
                     "title": "Installing the Magnetic Extensometer",
                     "path": "installing-the-magnetic-extensometer",
@@ -321,6 +316,16 @@
                     "title": "Installation Execution",
                     "path": "ipx/user-guide/installation-execution",
                     "icon": "download"
+                  }
+                ]
+              },
+              {
+                "group": "Installing the IPX",
+                "pages": [
+                  {
+                    "title": "Initial Checks & Configuration",
+                    "path": "ipx/user-guide/initial-checks",
+                    "icon": "check-circle"
                   }
                 ]
               },

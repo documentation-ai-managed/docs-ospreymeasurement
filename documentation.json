@@ -293,6 +293,11 @@
                 "group": "Planning",
                 "pages": [
                   {
+                    "title": "Consider Site Conditions",
+                    "path": "consider-site-conditions",
+                    "icon": "alert-octagon"
+                  },
+                  {
                     "title": "Components",
                     "path": "components",
                     "icon": "component"
@@ -393,7 +398,8 @@
               {
                 "title": "USB to RS485 Interface",
                 "path": "usb-to-rs485-interface",
-                "icon": "lucide-usb"
+                "icon": "lucide-usb",
+                "public": true
               }
             ]
           },

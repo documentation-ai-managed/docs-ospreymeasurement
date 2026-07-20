@@ -433,7 +433,8 @@
               }
             ]
           }
-        ]
+        ],
+        "public": false
       },
       {
         "tab": "Applications",
@@ -498,7 +499,8 @@
                 "path": "applications/structures",
                 "icon": "brick-wall"
               }
-            ]
+            ],
+            "public": true
           }
         ]
       }

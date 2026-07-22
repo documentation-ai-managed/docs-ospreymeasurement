@@ -18,7 +18,7 @@ For most applications, the Roll, Pitch, Yaw outputs should be sufficient.
 
 Looking along device from rear towards logger, clockwise is positive.
 
-```
+```typescript
 Flat Position: 0 radians
 Clockwise Rotation: Positive values
 Counterclockwise Rotation: Negative values
@@ -34,7 +34,7 @@ Counterclockwise Rotation: Negative values
 
 Forward pitch is positive.
 
-```
+```typescript
 Flat Position: 0 radians
 Forward Pitch: Positive values
 Backward Pitch: Negative values
@@ -46,7 +46,7 @@ Backward Pitch: Negative values
 
 Looking onto the top of the lid, clockwise is positive.
 
-```
+```typescript
 Pointing Up: 0 radians
 Clockwise Rotation: Positive values
 Counterclockwise Rotation: Negative values
@@ -70,7 +70,6 @@ As this is a gravitational sensor, only two of these parameters are valid at any
 The OTS uses a triaxial accelerometer to measure orientation relative to gravity. This means:
 
 - **In horizontal applications** (e.g., railway tracks, bridge decks): The sensor can measure tilt in two directions (Roll and Pitch), but cannot determine rotation around the vertical axis (Yaw) because this axis is aligned with gravity.
-
 - **In vertical applications** (e.g., retaining walls, building facades): The sensor can measure tilt away from vertical in two directions (Pitch and Yaw), but cannot determine rotation around the vertical axis (Roll) because this axis is aligned with gravity.
 
 <Callout kind="tip" collapsed="false">
@@ -82,6 +81,5 @@ The OTS uses a triaxial accelerometer to measure orientation relative to gravity
 For further support and documentation, please contact:
 
 - **Email**: [support@ospreymeasurement.com](mailto:support@ospreymeasurement.com)
-
 - **Phone:&#x20;**+44 (0) 20 3355 4447
 

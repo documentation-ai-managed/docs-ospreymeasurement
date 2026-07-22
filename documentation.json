@@ -191,7 +191,8 @@
                   },
                   {
                     "title": "Campbell Scientific",
-                    "path": "campbell-scientific"
+                    "path": "campbell-scientific",
+                    "icon": "shield-minus-icon"
                   }
                 ]
               }

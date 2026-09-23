@@ -208,6 +208,12 @@
                 "icon": "lucide-calculator"
               },
               {
+                "title": "Case Study Finder",
+                "path": "case-study-finder",
+                "icon": "search",
+                "public": false
+              },
+              {
                 "title": "Data Visualisation",
                 "path": "data-visualisation",
                 "icon": "chart-line-icon"
@@ -230,7 +236,8 @@
               {
                 "title": "Template ITPs",
                 "path": "template-itps",
-                "icon": "clipboard-check-icon"
+                "icon": "clipboard-check-icon",
+                "public": false
               },
               {
                 "title": "Compliance Certificates",

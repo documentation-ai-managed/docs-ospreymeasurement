@@ -211,7 +211,7 @@
                 "title": "Case Study Finder",
                 "path": "case-study-finder",
                 "icon": "search",
-                "public": false
+                "public": true
               },
               {
                 "title": "Data Visualisation",

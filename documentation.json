@@ -203,15 +203,14 @@
             "group": "Tools",
             "pages": [
               {
+                "title": "Case Studies",
+                "path": "case-studies",
+                "public": false
+              },
+              {
                 "title": "ASP Length Calculator",
                 "path": "asp/user-guide/asp-length-calculator",
                 "icon": "lucide-calculator"
-              },
-              {
-                "title": "Case Study Finder",
-                "path": "case-study-finder",
-                "icon": "search",
-                "public": true
               },
               {
                 "title": "Data Visualisation",
@@ -515,8 +514,8 @@
     ]
   },
   "logo-light": "https://blob-cdn.documentation.ai/org-96dd4a7c-b231-40f8-887d-2810403df3cf/doc-c3c764ab-5ea3-40fb-9c7d-49abb0da242c/1771486628980-c9ulx6ga1af-osprey-logo-3.png?q=85&fm=auto&auto=compress%2Cformat",
-  "favicon": "https://blob-cdn.documentation.ai/org-96dd4a7c-b231-40f8-887d-2810403df3cf/doc-c3c764ab-5ea3-40fb-9c7d-49abb0da242c/1771486567175-hyo3oz6p3bc-osprey-favicon.png?q=85&fm=auto&auto=compress%2Cformat",
-  "logo-dark": "https://blob-cdn.documentation.ai/org-96dd4a7c-b231-40f8-887d-2810403df3cf/doc-c3c764ab-5ea3-40fb-9c7d-49abb0da242c/1771486713212-xsciqkq6mq8-osprey-logo-dark1.png?q=85&fm=auto&auto=compress%2Cformat",
+  "favicon": "https://blob-cdn.documentation.ai/org-96dd4a7c-b231-40f8-887d-2810403df3cf/doc-c3c764ab-5ea3-40fb-9c7d-49abb0da242c/1771486567175-hyo3oz6p3bc-osprey-favicon.png?q=85&fm=auto&compress%2Cformat",
+  "logo-dark": "https://blob-cdn.documentation.ai/org-96dd4a7c-b231-40f8-887d-2810403df3cf/doc-c3c764ab-5ea3-40fb-9c7d-49abb0da242c/1771486713212-xsciqkq6mq8-osprey-logo-dark1.png?q=85&fm=auto&compress%2Cformat",
   "navbar": {
     "actions": {
       "primary": {

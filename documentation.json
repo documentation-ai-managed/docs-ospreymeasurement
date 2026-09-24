@@ -28,7 +28,8 @@
                 "icon": "home",
                 "show-sidebar": false,
                 "show-toc": false,
-                "show-parent-label": false
+                "show-parent-label": false,
+                "content-width": "wide"
               }
             ],
             "public": true
